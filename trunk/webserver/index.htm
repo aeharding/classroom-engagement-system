@@ -6,16 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <!-- Le styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
+      @-ms-viewport{
+				width: device-width;
+			}
     </style>
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <script type="text/javascript">
+			(function() {
+				if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+					var msViewportStyle = document.createElement("style");
+					msViewportStyle.appendChild(
+						document.createTextNode("@-ms-viewport{width:auto!important}")
+					);
+					document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+				}
+			})();
+		</script>
     
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
     <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
     
