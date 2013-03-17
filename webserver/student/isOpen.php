@@ -6,5 +6,8 @@ $con=mysqli_connect("localhost","appcooki_voteadm","trace","appcooki_vote");
 if (mysqli_connect_errno($con)) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
-  
+
+
+
+mysqli_close($con);
 ?>
