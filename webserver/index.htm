@@ -2,38 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>Classroom Engagement System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Le styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
-    <style>
-      body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-      }
-      @-ms-viewport{
-				width: device-width;
-			}
-    </style>
-    <script type="text/javascript">
-			(function() {
-				if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-					var msViewportStyle = document.createElement("style");
-					msViewportStyle.appendChild(
-						document.createTextNode("@-ms-viewport{width:auto!important}")
-					);
-					document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
-				}
-			})();
-		</script>
+
+    <script type="text/javascript" src="js/ie-mobile-fix.js"></script>
     
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
     
     <link href="css/cas.css" rel="stylesheet">
 
     <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
-
+		
+		<script type="text/javascript" src="js/jquery.backstretch.min.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function () {
+			$.backstretch([
+					"img/bg/lecture.jpg"
+				, "img/bg/campus.jpg"
+				, "img/bg/lecture_seats.jpg"
+			], {duration: 6000, fade: 750});
+		});
+  </script>
+		
     <script type="text/javascript" src="js/bootstrap.js"></script>
     
 
@@ -41,50 +35,22 @@
     <!--[if lt IE 9]>
       <script src="../assets/js/html5shiv.js"></script>
     <![endif]-->
-
-    <!-- Fav and touch icons
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">-->
+		
   </head>
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top" id="nav-ref">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="#">Wisc-CAS</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
-
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top:40px;">
       <div class="row-fluid">
-      
-				<div class="span6 offset3" data-toggle="buttons-radio" style="text-align:center">
-					<div class="btn-group btn-group-vertical multichoice-btn-group">
-						<button class="btn btn-large btn-block multichoice-btn">A</button>
-						<button class="btn btn-large btn-block multichoice-btn">B</button>
-						<button class="btn btn-large btn-block multichoice-btn">C</button>
-						<button class="btn btn-large btn-block multichoice-btn">D</button>
-						<button class="btn btn-large btn-block multichoice-btn">E</button>
-					</div>
+				<div class="span6 offset3 alpha50" style="border-radius: 15px;text-align:center">
+					<h1>Welcome to the next generation of classroom interaction.</h1>
+					<button class="btn btn-large btn-primary" type="button">Join a session <i class="icon-forward icon-white"></i></button>
+					<br><br>
+					<button class="btn btn-large btn-info" type="button">Create a session <i class="icon-asterisk icon-white"></i></button>
+					<br><br>
+					<button class="btn btn-large btn-danger" type="button">Administer a session <i class="icon-wrench icon-white"></i></button>
+					<br><br>
 				</div>
-				
 			</div>
     </div> <!-- /container -->
   </body>

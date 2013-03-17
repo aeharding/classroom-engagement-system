@@ -1,4 +1,6 @@
-
+@-ms-viewport{
+	width: device-width;
+}
 .multichoice-btn-group {
 	width:100%;
 	max-width:500px;
@@ -7,4 +9,14 @@
 	width:100%;
 	font-size:40px !important;
 	height:65px
+}
+.alpha50 {
+/* Fallback for web browsers that don't support RGBa */
+background-color: rgb(255, 255, 255);
+/* RGBa with 0.6 opacity */
+background-color: rgba(255, 255, 255, 0.5);
+/* For IE 5.5 - 7*/
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+/* For IE 8*/
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
 }
