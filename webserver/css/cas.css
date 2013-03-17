@@ -1,3 +1,18 @@
+body {
+  padding-top: 60px;
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
+}
+
+.center {
+     float: none;
+     margin-left: auto;
+     margin-right: auto; }
+    }
+
 @-ms-viewport{
 	width: device-width;
 }
@@ -19,4 +34,12 @@ background-color: rgba(255, 255, 255, 0.5);
 filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
 /* For IE 8*/
 -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+}
+
+.friendly {
+	font-family: 'Just Me Again Down Here', cursive;
+}
+
+h1.friendly {
+	font-size:50px;
 }
