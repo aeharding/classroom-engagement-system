@@ -12,10 +12,11 @@ $sql = "CREATE TABLE sessions
 (
 PID INT NOT NULL AUTO_INCREMENT, 
 PRIMARY KEY(PID),
-sessionName CHAR(30),
-sessionDesc CHAR(150),
-sessionisOpen TINYINT(1),
-loginPass CHAR(30)
+id CHAR(30),
+desc CHAR(150),
+email CHAR(150),
+isOpen TINYINT(1),
+pass CHAR(30)
 )";
 
 // Execute query

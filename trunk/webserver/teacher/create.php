@@ -56,10 +56,10 @@
 					<form>
 						<h2>Enter details</h2>
 						<div style="max-width:300px;" class="center">
-							<input type="text" class="input-block-level" placeholder="Class session ID name">
-							<input type="text" class="input-block-level" placeholder="Your email">
-							<input type="password" class="input-block-level" placeholder="Password">
-							<input type="password" class="input-block-level" placeholder="Retype password">
+							<input type="text" class="input-block-level" name="sid" placeholder="Class session ID name">
+							<input type="text" class="input-block-level" name="email" placeholder="Your email">
+							<input type="password" class="input-block-level" name="pass" placeholder="Password">
+							<input type="password" class="input-block-level" placeholder="Retype password TODOOO">
 						</div>
 						<button class="btn btn-large btn-primary" type="submit">Create + Administrate</button>
 					</form>
