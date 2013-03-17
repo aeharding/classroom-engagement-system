@@ -40,10 +40,10 @@
           <a class="brand" href="#">CAS</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li><a href="../index.htm">Home</a></li>
-              <li class="active"><a href="index.htm">Join Session</a></li>
-              <li><a href="../teacher/admin.htm">Administer Session</a></li>
-              <li><a href="../teacher/create.htm">Create Session</a></li>
+              <li><a href="../index.php">Home</a></li>
+              <li><a href="../student/index.php">Join Session</a></li>
+              <li class="active"><a href="admin.php">Administer Session</a></li>
+              <li><a href="create.php">Create Session</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -56,10 +56,10 @@
 					<form>
 						<h2>Enter details</h2>
 						<div style="max-width:300px;" class="center">
-							<input type="text" class="input-block-level" placeholder="Your school ID">
 							<input type="text" class="input-block-level" placeholder="Class session ID">
+							<input type="password" class="input-block-level" placeholder="Password">
 						</div>
-						<button class="btn btn-large btn-primary" type="submit">Join session</button>
+						<button class="btn btn-large btn-primary" type="submit">Administrate</button>
 					</form>
 				</div>
 			</div>

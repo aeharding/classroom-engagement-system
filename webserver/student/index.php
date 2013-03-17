@@ -41,9 +41,9 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li><a href="../index.htm">Home</a></li>
-              <li><a href="../student/index.htm">Join Session</a></li>
-              <li class="active"><a href="admin.htm">Administer Session</a></li>
-              <li><a href="create.htm">Create Session</a></li>
+              <li class="active"><a href="index.php">Join Session</a></li>
+              <li><a href="../teacher/admin.php">Administer Session</a></li>
+              <li><a href="../teacher/create.php">Create Session</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -56,10 +56,10 @@
 					<form>
 						<h2>Enter details</h2>
 						<div style="max-width:300px;" class="center">
+							<input type="text" class="input-block-level" placeholder="Your school ID">
 							<input type="text" class="input-block-level" placeholder="Class session ID">
-							<input type="password" class="input-block-level" placeholder="Password">
 						</div>
-						<button class="btn btn-large btn-primary" type="submit">Administrate</button>
+						<button class="btn btn-large btn-primary" type="submit">Join session</button>
 					</form>
 				</div>
 			</div>
