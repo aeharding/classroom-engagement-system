@@ -1,10 +1,11 @@
 <?php
 // Create connection
-$con=mysqli_connect("localhost","appcooki_voteadm","trace","appcooki_vote");
+$con = new mysqli("localhost","appcooki_voteadm","trace","appcooki_vote");
 
 // Check connection
-if (mysqli_connect_errno($con)) {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+if ($con->connect_errno) {
+    printf("Connect failed: %s\n", $con->connect_error);
+    exit();
 }
 
 // Create status
@@ -12,21 +13,19 @@ $sql = "CREATE TABLE sessions
 (
 PID INT NOT NULL AUTO_INCREMENT, 
 PRIMARY KEY(PID),
-id CHAR(30),
-desc CHAR(150),
-email CHAR(150),
-isOpen TINYINT(1),
-pass CHAR(30)
+s_sid CHAR(30),
+s_desc CHAR(50),
+s_email CHAR(150),
+s_isOpen TINYINT(1) NOT NULL DEFAULT 'F',
+s_pass CHAR(30)
 )";
 
 // Execute query
-if (mysqli_query($con,$sql)) {
-  echo "Table sessions created successfully";
+if (!$con->query($sql)) {
+	printf("Error message: %s\n", $con->error);
 } else {
-  echo "Error creating table: " . mysqli_error();
+	printf("Created table 'sessions' successfully.");
 }
 
-
-
-mysqli_close($con);
+$con->close();
 ?>

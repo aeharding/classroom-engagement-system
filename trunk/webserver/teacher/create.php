@@ -1,3 +1,63 @@
+<?php
+function checkID($id_check) {
+	$con = new mysqli("localhost","appcooki_voteadm","trace","appcooki_vote");
+	$query = "SELECT * FROM sessions WHERE s_sid='" . $id_check . "'";
+	$result = $con->query($query);
+	if(count($result->fetch_array(MYSQLI_NUM)) > 0) {
+		return false;
+	}
+	return true;
+}
+$continue = true;
+$reason_fail = "";
+if ($_POST['submitted'] == 1) {
+	
+	$id = $_POST[sid];
+	$email = $_POST[email];
+	$pass = $_POST[pass];
+	$pass_ver = $_POST[pass_ver];
+	if((!filter_var($email, FILTER_VALIDATE_EMAIL))) {
+		$continue = false;
+		$reason_fail .= "<br>Your email address is invalid.";
+	}
+	if($pass != $pass_ver) {
+		$continue = false;
+		$reason_fail .= "<br>Your entered password does not match.";
+	}
+	if(strlen($pass) < 5) {
+		$continue = false;
+		$reason_fail .= "<br>Your entered password must be more than 5 characters.";
+	}
+	if(!checkID($id)) {
+		$continue = false;
+		$reason_fail .= "<br>The session ID is already taken.";
+	}
+	if(strlen($id) < 3) {
+		$continue = false;
+		$reason_fail .= "<br>The session ID must be greater than three characters.";
+	}
+	
+	if($continue) {
+		$con = new mysqli("localhost","appcooki_voteadm","trace","appcooki_vote");
+		// Check connection
+		if ($con->connect_errno) {
+				printf("Connect failed: %s\n", $con->connect_error);
+				exit();
+		}
+
+		$sql="INSERT INTO sessions (s_sid, s_email, s_pass)
+		VALUES
+		('$id','$email','$pass')";
+
+		if (!mysqli_query($con,$sql)) {
+			die('Error: ' . mysqli_error());
+		}
+		//echo "1 record added"; // Debugging; will break html
+
+		mysqli_close($con);
+	}
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -53,13 +113,21 @@
     <div class="container-fluid">
 			<div class="row-fluid">
 				<div class="span6 offset3" style="text-align:center">
-					<form>
+					<?php
+						if(!$continue) {
+							echo '<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button><strong>Form not submitted.</strong> ' . $reason_fail . '</div>';
+						} else if($_POST['submitted'] == 1) {
+							echo '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">×</button><strong>Session created!</strong> Click here to manage your new session.</div>';
+						}
+					?>
+					<form action="create.php" method="post">
 						<h2>Enter details</h2>
 						<div style="max-width:300px;" class="center">
 							<input type="text" class="input-block-level" name="sid" placeholder="Class session ID name">
 							<input type="text" class="input-block-level" name="email" placeholder="Your email">
 							<input type="password" class="input-block-level" name="pass" placeholder="Password">
-							<input type="password" class="input-block-level" placeholder="Retype password TODOOO">
+							<input type="password" class="input-block-level" name="pass_ver" placeholder="Retype password">
+							<input type="hidden" name="submitted" value="1">
 						</div>
 						<button class="btn btn-large btn-primary" type="submit">Create + Administrate</button>
 					</form>
