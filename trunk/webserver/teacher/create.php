@@ -40,10 +40,10 @@
           <a class="brand" href="#">CAS</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li><a href="../index.htm">Home</a></li>
-              <li><a href="../student/index.htm">Join Session</a></li>
-              <li><a href="admin.htm">Administer Session</a></li>
-              <li class="active"><a href="#">Create Session</a></li>
+              <li><a href="../index.php">Home</a></li>
+              <li><a href="../student/index.php">Join Session</a></li>
+              <li><a href="admin.php">Administer Session</a></li>
+              <li class="active"><a href="create.php">Create Session</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
