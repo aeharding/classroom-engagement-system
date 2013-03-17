@@ -29,8 +29,11 @@
 		</script>
     
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    
+    <link href="css/cas.css" rel="stylesheet">
 
     <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+
     <script type="text/javascript" src="js/bootstrap.js"></script>
     
 
@@ -49,7 +52,7 @@
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top" id="nav-ref">
       <div class="navbar-inner">
         <div class="container">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -69,19 +72,20 @@
       </div>
     </div>
 
-    <div class="container">
-    <div class="alert alert-success">Answer successfully submitted!</div>
+    <div class="container-fluid">
       <div class="row-fluid">
-				<div class="span4 offset4"  data-toggle="buttons-radio" style="text-align:center">
-				<div class="btn-group btn-group-vertical" style="width:100%;font-size:40px">
-					<button class="btn btn-large btn-block" style="width:100%;font-size:40px">A</button>
-					<button class="btn btn-large btn-block" style="width:100%;font-size:40px">B</button>
-					<button class="btn btn-large btn-block" style="width:100%;font-size:40px">C</button>
-					<button class="btn btn-large btn-block" style="width:100%;font-size:40px">D</button>
-					<button class="btn btn-large btn-block" style="width:100%;font-size:40px">E</button>
+      
+				<div class="span6 offset3" data-toggle="buttons-radio" style="text-align:center">
+					<div class="btn-group btn-group-vertical multichoice-btn-group">
+						<button class="btn btn-large btn-block multichoice-btn">A</button>
+						<button class="btn btn-large btn-block multichoice-btn">B</button>
+						<button class="btn btn-large btn-block multichoice-btn">C</button>
+						<button class="btn btn-large btn-block multichoice-btn">D</button>
+						<button class="btn btn-large btn-block multichoice-btn">E</button>
+					</div>
 				</div>
+				
 			</div>
-
     </div> <!-- /container -->
   </body>
 </html>
