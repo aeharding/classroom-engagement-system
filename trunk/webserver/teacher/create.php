@@ -11,7 +11,6 @@ function checkID($id_check) {
 $continue = true;
 $reason_fail = "";
 if ($_POST['submitted'] == 1) {
-	
 	$id = $_POST[sid];
 	$email = $_POST[email];
 	$pass = $_POST[pass];

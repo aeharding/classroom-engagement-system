@@ -1,3 +1,54 @@
+<?php
+	if ($_POST['submitted'] == 1) {
+		$con = new mysqli("localhost","appcooki_voteadm","trace","appcooki_vote");
+		// Check connection
+		if ($con->connect_errno) {
+				printf("Connect failed: %s\n", $con->connect_error);
+				exit();
+		}
+		
+		$session = $_POST['session'];
+		$student = $_POST['student'];
+		
+		$sessionExists  = true;
+		$sessionActive  = true;
+		$validStudentID = true;
+		
+		if(strlen($student) > 5) {
+			$sql="SELECT count(1) FROM sessions WHERE s_sid='" . $session . "'";
+
+			if (!mysqli_query($con,$sql)) {
+				die('Error: ' . mysqli_error());
+			}
+			
+			$result = $con->query($sql);
+			$row = $result->fetch_array(MYSQLI_NUM);
+			$total = $row[0];
+			if($total == 1) {
+				$sql="SELECT count(1) FROM sessions WHERE s_sid='" . $session . "' AND s_isOpen='true'";
+				if (!mysqli_query($con,$sql)) {
+					die('Error: ' . mysqli_error());
+				}
+				$result = $con->query($sql);
+				$row = $result->fetch_array(MYSQLI_NUM);
+				$total = $row[0];
+				if($total == 1) {
+					session_start();
+					$_SESSION['student'] = $student;
+					$_SESSION['studentOfSession'] = $session;
+					header("location:vote/index.php");
+				} else {
+					$sessionActive = false;
+				}
+			} else {
+				$sessionExists = false;
+			}
+			mysqli_close($con);
+		} else {
+			$validStudentID = false;
+		}
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -53,11 +104,12 @@
     <div class="container-fluid">
 			<div class="row-fluid">
 				<div class="span6 offset3" style="text-align:center">
-					<form>
+					<form action="index.php" method="post">
 						<h2>Enter details</h2>
 						<div style="max-width:300px;" class="center">
-							<input type="text" class="input-block-level" placeholder="Your school ID">
-							<input type="text" class="input-block-level" placeholder="Class session ID">
+							<input type="text" class="input-block-level" name="student" placeholder="Your student ID">
+							<input type="text" class="input-block-level" name="session" placeholder="Class session ID">
+							<input type="hidden" name="submitted" value="1">
 						</div>
 						<button class="btn btn-large btn-primary" type="submit">Join session</button>
 					</form>

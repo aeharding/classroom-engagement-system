@@ -7,17 +7,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Le styles -->
-    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" rel="stylesheet">
 
-    <script type="text/javascript" src="../js/ie-mobile-fix.js"></script>
+    <script type="text/javascript" src="../../js/ie-mobile-fix.js"></script>
     
-    <link href="../css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../../css/bootstrap-responsive.css" rel="stylesheet">
     
-    <link href="../css/cas.css" rel="stylesheet">
+    <link href="../../css/cas.css" rel="stylesheet">
 
-    <script type="text/javascript" src="../js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="../../js/jquery-1.9.1.js"></script>
 
-    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.js"></script>
     
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -41,9 +41,9 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="../index.php">Home</a></li>
-              <li><a href="index.php">Join Session</a></li>
-              <li><a href="../teacher/admin.php">Administer Session</a></li>
-              <li><a href="../teacher/create.php">Create Session</a></li>
+              <li><a href="../index.php">Join Session</a></li>
+              <li><a href="../../teacher/admin.php">Administer Session</a></li>
+              <li><a href="../../teacher/create.php">Create Session</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
