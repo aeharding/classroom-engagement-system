@@ -1,11 +1,19 @@
 <?php
-
 	session_start();
 	if(!isset($_SESSION['session'])) {
 		session_destroy();
 		header("location:login.php");
+	} else {
+		$sessionActive = false;
+		if(isset($_SESSION['sessionActive'])) {
+			$sessionActive = $_SESSION['sessionActive'];
+		} else {
+			$_SESSION['sessionActive'] = false;
+		}
 	}
-
+	$con = new mysqli("localhost","appcooki_voteadm","trace","appcooki_vote");
+	$query = "UPDATE sessions SET s_isOpen='" . $_SESSION['sessionActive'] . "' WHERE s_sid='" . $_SESSION['session'] . "'";
+	$result = $con->query($query);
 ?>
 <html lang="en">
   <head>
@@ -72,8 +80,16 @@
     <div class="container-fluid">
 			<div class="row-fluid">
 				<div class="span6 offset3" style="text-align:center">
-					<a href="open.php" class="btn btn-medium btn-success"><i class="icon-off icon-white"></i> Open session</a>
-					<a href="logout.php" class="btn btn-medium btn-danger"><i class="icon-user icon-white"></i> Log out</a>
+					<?php
+						if($sessionActive) {
+							echo '<a href="toggleSession.php" class="btn btn-medium btn-success"><i class="icon-off icon-white"></i> Close session</a>
+										<a href="logout.php" class="btn btn-medium btn-danger"><i class="icon-user icon-white"></i> Log out + close session</a>';
+						} else {
+							echo '<a href="toggleSession.php" class="btn btn-medium btn-success"><i class="icon-off icon-white"></i> Open session</a>
+										<a href="logout.php" class="btn btn-medium btn-danger"><i class="icon-user icon-white"></i> Log out</a>';
+						}
+					?>
+					
 				</div>
 			</div>
 			<hr>
