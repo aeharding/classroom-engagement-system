@@ -10,11 +10,10 @@
 		$session = $_POST['session'];
 		$student = $_POST['student'];
 		
-		$sessionExists  = true;
-		$sessionActive  = true;
-		$validStudentID = true;
+		$error = false;
+		$errorMsg = '';
 		
-		if(strlen($student) > 5) {
+		if(strlen($student) > 4) {
 			$sql="SELECT count(1) FROM sessions WHERE s_sid='" . $session . "'";
 
 			if (!mysqli_query($con,$sql)) {
@@ -25,7 +24,7 @@
 			$row = $result->fetch_array(MYSQLI_NUM);
 			$total = $row[0];
 			if($total == 1) {
-				$sql="SELECT count(1) FROM sessions WHERE s_sid='" . $session . "' AND s_isOpen='true'";
+				$sql="SELECT count(1) FROM sessions WHERE s_sid='" . $session . "' AND s_isOpen='1'";
 				if (!mysqli_query($con,$sql)) {
 					die('Error: ' . mysqli_error());
 				}
@@ -38,14 +37,17 @@
 					$_SESSION['studentOfSession'] = $session;
 					header("location:vote/index.php");
 				} else {
-					$sessionActive = false;
+					$error = true;
+					$errorMsg .= '<br>The session is not currently open.';
 				}
 			} else {
-				$sessionExists = false;
+				$error = true;
+				$errorMsg .= '<br>The session does not exist.';
 			}
 			mysqli_close($con);
 		} else {
-			$validStudentID = false;
+			$error = true;
+			$errorMsg .= '<br>Please use a student ID longer than four characters.';
 		}
 	}
 ?>
@@ -88,10 +90,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">CAS</a>
+          <a class="brand" href="../index.php">CAS</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li><a href="../index.htm">Home</a></li>
               <li class="active"><a href="index.php">Join Session</a></li>
               <li><a href="../teacher/admin.php">Administer Session</a></li>
               <li><a href="../teacher/create.php">Create Session</a></li>
@@ -104,6 +105,13 @@
     <div class="container-fluid">
 			<div class="row-fluid">
 				<div class="span6 offset3" style="text-align:center">
+					<?php
+					if($error) {
+						echo '<div class="alert alert-error">
+										<button type="button" class="close" data-dismiss="alert">×</button><strong>Unable to join session.</strong> ' . $errorMsg . '
+									</div>';
+					}
+					?>
 					<form action="index.php" method="post">
 						<h2>Enter details</h2>
 						<div style="max-width:300px;" class="center">

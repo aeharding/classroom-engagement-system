@@ -64,10 +64,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">CAS</a>
+          <a class="brand" href="../index.php">CAS</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li><a href="../index.php">Home</a></li>
               <li><a href="../student/index.php">Join Session</a></li>
               <li class="active"><a href="admin.php">Administer Session</a></li>
               <li><a href="create.php">Create Session</a></li>
@@ -82,7 +81,7 @@
 				<div class="span6 offset3" style="text-align:center">
 					<?php
 						if($sessionActive) {
-							echo '<a href="toggleSession.php" class="btn btn-medium btn-success"><i class="icon-off icon-white"></i> Close session</a>
+							echo '<a href="toggleSession.php" class="btn btn-medium btn-warning"><i class="icon-off icon-white"></i> Close session</a>
 										<a href="logout.php" class="btn btn-medium btn-danger"><i class="icon-user icon-white"></i> Log out + close session</a>';
 						} else {
 							echo '<a href="toggleSession.php" class="btn btn-medium btn-success"><i class="icon-off icon-white"></i> Open session</a>
