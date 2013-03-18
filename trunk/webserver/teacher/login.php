@@ -1,65 +1,38 @@
 <?php
-function checkID($id_check) {
-	$con = new mysqli("localhost","appcooki_voteadm","trace","appcooki_vote");
-	$query = "SELECT * FROM sessions WHERE s_sid='" . $id_check . "'";
-	$result = $con->query($query);
-	if(count($result->fetch_array(MYSQLI_NUM)) > 0) {
-		return false;
+	$count = 0;
+	session_start();
+	if(isset($_SESSION['username'])) {
+		header("location:admin.php");
 	}
-	return true;
-}
-$continue = true;
-$reason_fail = "";
-if ($_POST['submitted'] == 1) {
-	
-	$id = $_POST[sid];
-	$email = $_POST[email];
-	$pass = $_POST[pass];
-	$pass_ver = $_POST[pass_ver];
-	if((!filter_var($email, FILTER_VALIDATE_EMAIL))) {
-		$continue = false;
-		$reason_fail .= "<br>Your email address is invalid.";
-	}
-	if($pass != $pass_ver) {
-		$continue = false;
-		$reason_fail .= "<br>Your entered password does not match.";
-	}
-	if(strlen($pass) < 5) {
-		$continue = false;
-		$reason_fail .= "<br>Your entered password must be more than 5 characters.";
-	}
-	if(!checkID($id)) {
-		$continue = false;
-		$reason_fail .= "<br>The session ID is already taken.";
-	}
-	if(strlen($id) < 3) {
-		$continue = false;
-		$reason_fail .= "<br>The session ID must be greater than three characters.";
-	}
-	
-	if($continue) {
+	if ($_POST['submitted'] == 1) {
 		$con = new mysqli("localhost","appcooki_voteadm","trace","appcooki_vote");
 		// Check connection
 		if ($con->connect_errno) {
 				printf("Connect failed: %s\n", $con->connect_error);
 				exit();
 		}
+		
+		$session = $_POST['sid'];
+		$pass = $_POST['pass'];
 
-		$sql="INSERT INTO sessions (s_sid, s_email, s_pass)
-		VALUES
-		('$id','$email','$pass')";
+		$sql="SELECT count(1) FROM sessions WHERE s_sid='" . $session . "' AND s_pass='" . $pass . "'";
 
 		if (!mysqli_query($con,$sql)) {
 			die('Error: ' . mysqli_error());
 		}
-		//echo "1 record added"; // Debugging; will break html
+		
+		$result=$con->query($sql);
+		$row = $result->fetch_array(MYSQLI_NUM);
+		$total = $row[0];
+		if($total == 1) {
+			$_SESSION['session'] = $session;
+			header("location:admin.php");
+		}
 
 		mysqli_close($con);
-		
-		header( 'Location: admin.php?created=true' ) ;
 	}
-}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -104,8 +77,8 @@ if ($_POST['submitted'] == 1) {
             <ul class="nav">
               <li><a href="../index.php">Home</a></li>
               <li><a href="../student/index.php">Join Session</a></li>
-              <li><a href="admin.php">Administer Session</a></li>
-              <li class="active"><a href="create.php">Create Session</a></li>
+              <li class="active"><a href="admin.php">Administer Session</a></li>
+              <li><a href="create.php">Create Session</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -116,22 +89,24 @@ if ($_POST['submitted'] == 1) {
 			<div class="row-fluid">
 				<div class="span6 offset3" style="text-align:center">
 					<?php
-						if(!$continue) {
+						if($_GET['created']) {
+							echo '<div class="alert alert-success">
+											<button type="button" class="close" data-dismiss="alert">×</button><strong>Success!</strong> Session created. Login to get started.
+										</div>';
+						} else if($_POST['submitted']) {
 							echo '<div class="alert alert-error">
-											<button type="button" class="close" data-dismiss="alert">×</button><strong>Form not submitted.</strong> ' . $reason_fail . '
+											<button type="button" class="close" data-dismiss="alert">×</button><strong>Oops!</strong> Make sure you typed in the correct credentials.
 										</div>';
 						}
 					?>
-					<form action="create.php" method="post">
+					<form action="login.php" method="post">
 						<h2>Enter details</h2>
 						<div style="max-width:300px;" class="center">
-							<input type="text" class="input-block-level" name="sid" placeholder="Class session ID name">
-							<input type="text" class="input-block-level" name="email" placeholder="Your email">
+							<input type="text" class="input-block-level" name="sid" placeholder="Class session ID">
 							<input type="password" class="input-block-level" name="pass" placeholder="Password">
-							<input type="password" class="input-block-level" name="pass_ver" placeholder="Retype password">
 							<input type="hidden" name="submitted" value="1">
 						</div>
-						<button class="btn btn-large btn-primary" type="submit">Create + Administrate</button>
+						<button class="btn btn-large btn-primary" type="submit">Administrate</button>
 					</form>
 				</div>
 			</div>
