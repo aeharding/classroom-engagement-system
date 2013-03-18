@@ -72,10 +72,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">CAS</a>
+          <a class="brand" href="../index.php">CAS</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li><a href="../index.php">Home</a></li>
               <li><a href="../student/index.php">Join Session</a></li>
               <li class="active"><a href="admin.php">Administer Session</a></li>
               <li><a href="create.php">Create Session</a></li>
