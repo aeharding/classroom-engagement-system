@@ -1,7 +1,7 @@
 <?php
 	$count = 0;
 	session_start();
-	if(isset($_SESSION['username'])) {
+	if(isset($_SESSION['session'])) {
 		header("location:admin.php");
 	}
 	if ($_POST['submitted'] == 1) {
