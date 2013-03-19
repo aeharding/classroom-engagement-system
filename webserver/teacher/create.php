@@ -124,11 +124,24 @@ if ($_POST['submitted'] == 1) {
 					?>
 					<form action="create.php" method="post">
 						<h2>Enter details</h2>
+						
 						<div style="max-width:300px;" class="center">
-							<input type="text" class="input-block-level" name="sid" placeholder="Class session ID name">
-							<input type="text" class="input-block-level" name="email" placeholder="Your email">
-							<input type="password" class="input-block-level" name="pass" placeholder="Password">
-							<input type="password" class="input-block-level" name="pass_ver" placeholder="Retype password">
+							<div class="input-prepend" style="width:100%">
+								<span class="add-on"><i class="icon-book"></i></span>
+								<input id="inputIcon" type="text" name="sid" style="width:80%" placeholder="Class session ID Name">
+							</div>
+							<div class="input-prepend" style="width:100%">
+								<span class="add-on"><i class="icon-envelope"></i></span>
+								<input id="inputIcon" type="text" name="email" style="width:80%" placeholder="Your email">
+							</div>
+							<div class="input-prepend" style="width:100%">
+								<span class="add-on"><i class="icon-eye-close"></i></span>
+								<input id="inputIcon" type="password" name="pass" style="width:80%" placeholder="Password">
+							</div>
+							<div class="input-prepend" style="width:100%">
+								<span class="add-on"><i class="icon-repeat"></i></span>
+								<input id="inputIcon" type="password" name="pass_ver" style="width:80%" placeholder="Password verification">
+							</div>
 							<input type="hidden" name="submitted" value="1">
 						</div>
 						<button class="btn btn-large btn-primary" type="submit">Create + Administrate</button>
