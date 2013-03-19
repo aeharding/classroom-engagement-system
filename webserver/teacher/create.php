@@ -73,6 +73,8 @@ if ($_POST['submitted'] == 1) {
     <script type="text/javascript" src="../js/ie-mobile-fix.js"></script>
     
     <link href="../css/bootstrap-responsive.css" rel="stylesheet">
+
+    <link href="../css/navbar.css" rel="stylesheet">
     
     <link href="../css/cas.css" rel="stylesheet">
 

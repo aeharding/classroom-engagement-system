@@ -41,19 +41,26 @@
   </head>
 
   <body>
-
-    <div class="container-fluid" style="margin-top:40px;">
-      <div class="row-fluid">
-				<div class="span6 offset3 alpha50" style="border-radius: 15px;text-align:center;">
-					<h1 class="friendly">Welcome to the next generation of classroom interaction.</h1>
-					<button class="btn btn-large btn-primary" type="button" onclick="parent.location='student/index.php'">Join a session <i class="icon-forward icon-white"></i></button>
-					<br><br>
-					<button class="btn btn-large btn-info" type="button" onclick="parent.location='teacher/create.php'">Create a session <i class="icon-asterisk icon-white"></i></button>
-					<br><br>
-					<button class="btn btn-large btn-danger" type="button" onclick="parent.location='teacher/admin.php'">Administer a session <i class="icon-wrench icon-white"></i></button>
-					<br><br>
+		<div id="wrap">
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span6 offset3 alpha50" style="border-radius: 15px;text-align:center;margin-bottom:60px;">
+						<h1 class="friendly">Welcome to the next generation of classroom interaction.</h1>
+						<button class="btn btn-large btn-primary" type="button" onclick="parent.location='student/index.php'">Join a session <i class="icon-forward icon-white"></i></button>
+						<br><br>
+						<button class="btn btn-large btn-info" type="button" onclick="parent.location='teacher/create.php'">Create a session <i class="icon-asterisk icon-white"></i></button>
+						<br><br>
+						<button class="btn btn-large btn-danger" type="button" onclick="parent.location='teacher/admin.php'">Administer a session <i class="icon-wrench icon-white"></i></button>
+						<br><br>
+					</div>
 				</div>
-			</div>
-    </div> <!-- /container -->
+			</div> <!-- /container -->
+    </div> <!-- /wrap for footer -->
+		<div id="footer">
+      <div class="container-fluid">
+        <p class="muted"><br>Created by Research to Reality <a href="http://wiki.gpii.net/index.php/R2R">[about us]</a>
+      </div>
+    </div>
+    
   </body>
 </html>
