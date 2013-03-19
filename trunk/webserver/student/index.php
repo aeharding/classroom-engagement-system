@@ -117,8 +117,14 @@
 					<form action="index.php" method="post">
 						<h2>Enter details</h2>
 						<div style="max-width:300px;" class="center">
-							<input type="text" class="input-block-level" name="student" placeholder="Your student ID">
-							<input type="text" class="input-block-level" name="session" placeholder="Class session ID">
+							<div class="input-prepend" style="width:100%">
+								<span class="add-on"><i class="icon-user"></i></span>
+								<input id="inputIcon" type="text" name="student" style="width:80%" placeholder="Your student ID">
+							</div>
+							<div class="input-prepend" style="width:100%">
+								<span class="add-on"><i class="icon-book"></i></span>
+								<input id="inputIcon" type="text" name="session" style="width:80%" placeholder="Class session ID">
+							</div>
 							<input type="hidden" name="submitted" value="1">
 						</div>
 						<button class="btn btn-large btn-primary" type="submit">Join session</button>
