@@ -2,7 +2,8 @@
 
 	session_start(); 
 	if(isset($_SESSION['sessionActive']) && $_SESSION['sessionActive']) {
-		$con = new mysqli("localhost","appcooki_voteadm","trace","appcooki_vote");
+		include '../setup/connect.php';
+		$con = new mysqli($config_server, $config_user, $config_pass, $config_table);
 		$query = "UPDATE sessions SET s_isOpen='0' WHERE s_sid='" . $_SESSION['session'] . "'";
 		$result = $con->query($query);
 	}

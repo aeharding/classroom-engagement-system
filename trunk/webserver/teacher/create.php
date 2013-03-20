@@ -1,6 +1,5 @@
 <?php
-function checkID($id_check) {
-	$con = new mysqli("localhost","appcooki_voteadm","trace","appcooki_vote");
+function checkID($con,$id_check) {
 	$query = "SELECT * FROM sessions WHERE s_sid='" . $id_check . "'";
 	$result = $con->query($query);
 	if(count($result->fetch_array(MYSQLI_NUM)) > 0) {
@@ -11,6 +10,8 @@ function checkID($id_check) {
 $continue = true;
 $reason_fail = "";
 if ($_POST['submitted'] == 1) {
+	include '../setup/connect.php';
+	$con = new mysqli($config_server, $config_user, $config_pass, $config_table);
 	$id = $_POST[sid];
 	$email = $_POST[email];
 	$pass = $_POST[pass];
@@ -27,7 +28,7 @@ if ($_POST['submitted'] == 1) {
 		$continue = false;
 		$reason_fail .= "<br>Your entered password must be more than 5 characters.";
 	}
-	if(!checkID($id)) {
+	if(!checkID($con,$id)) {
 		$continue = false;
 		$reason_fail .= "<br>The session ID is already taken.";
 	}
@@ -37,7 +38,6 @@ if ($_POST['submitted'] == 1) {
 	}
 	
 	if($continue) {
-		$con = new mysqli("localhost","appcooki_voteadm","trace","appcooki_vote");
 		// Check connection
 		if ($con->connect_errno) {
 				printf("Connect failed: %s\n", $con->connect_error);

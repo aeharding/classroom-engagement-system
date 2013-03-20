@@ -5,7 +5,8 @@
 		header("location:admin.php");
 	}
 	if ($_POST['submitted'] == 1) {
-		$con = new mysqli("localhost","appcooki_voteadm","trace","appcooki_vote");
+		include '../setup/connect.php';
+		$con = new mysqli($config_server, $config_user, $config_pass, $config_table);
 		// Check connection
 		if ($con->connect_errno) {
 				printf("Connect failed: %s\n", $con->connect_error);
