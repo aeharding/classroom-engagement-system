@@ -1,4 +1,16 @@
 <?php
+
+// Captcha stuff
+require_once('recaptchalib.php');
+// Get a key from https://www.google.com/recaptcha/admin/create
+$publickey = "6LfvmN4SAAAAABEv2krtPAQV8zsWhjuRgnQL-mSB";
+$privatekey = "6LfvmN4SAAAAAODY0sJi8jtCaXv7DZlxVkVYwz9d";
+# the response from reCAPTCHA
+$resp = null;
+# the error code from reCAPTCHA, if any
+$error = null;
+
+
 function checkID($con,$id_check) {
 	$query = "SELECT * FROM sessions WHERE s_sid='" . $id_check . "'";
 	$result = $con->query($query);
@@ -16,6 +28,7 @@ if ($_POST['submitted'] == 1) {
 	$email = $_POST[email];
 	$pass = $_POST[pass];
 	$pass_ver = $_POST[pass_ver];
+	$captcha = $_POST["recaptcha_response_field"];
 	if((!filter_var($email, FILTER_VALIDATE_EMAIL))) {
 		$continue = false;
 		$reason_fail .= "<br>Your email address is invalid.";
@@ -35,6 +48,19 @@ if ($_POST['submitted'] == 1) {
 	if(strlen($id) < 3) {
 		$continue = false;
 		$reason_fail .= "<br>The session ID must be greater than three characters.";
+	}
+	if ($_POST["recaptcha_response_field"]) {
+		$resp = recaptcha_check_answer ($privatekey,
+																		$_SERVER["REMOTE_ADDR"],
+																		$_POST["recaptcha_challenge_field"],
+																		$_POST["recaptcha_response_field"]);
+		if (!$resp->is_valid) {
+			$continue = false;
+			$reason_fail .= "<br>The captcha entered was not correct.";
+		}
+	} else {
+		$continue = false;
+			$reason_fail .= "<br>Please enter the captcha.";
 	}
 	
 	if($continue) {
@@ -141,6 +167,9 @@ if ($_POST['submitted'] == 1) {
 							<div class="input-prepend" style="width:100%">
 								<span class="add-on"><i class="icon-repeat"></i></span>
 								<input id="inputIcon" type="password" name="pass_ver" style="width:80%" placeholder="Password verification">
+							</div>
+							<div style="margin-left:-7px">
+								<?php echo recaptcha_get_html($publickey, $error); ?>
 							</div>
 							<input type="hidden" name="submitted" value="1">
 						</div>
