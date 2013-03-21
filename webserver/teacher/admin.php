@@ -71,8 +71,8 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li><a href="../student/index.php">Join Session</a></li>
-              <li class="active"><a href="admin.php">Administer Session</a></li>
               <li><a href="create.php">Create Session</a></li>
+              <li class="active"><a href="admin.php">Administer Session</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
