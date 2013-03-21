@@ -23,7 +23,8 @@
 			$.backstretch([
 					"img/bg/lecture.jpg"
 				, "img/bg/campus.jpg"
-				, "img/bg/lecture_seats.jpg"
+				, "img/bg/lincoln.jpg"
+				, "img/bg/winter.jpg"
 			], {duration: 6000, fade: 750});
 		});
   </script>
