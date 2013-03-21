@@ -1,5 +1,7 @@
 <?php
+	
 function checkID($con,$id_check) {
+	$id_check = $con->real_escape_string($id_check);
 	$query = "SELECT * FROM sessions WHERE s_sid='" . $id_check . "'";
 	$result = $con->query($query);
 	if(count($result->fetch_array(MYSQLI_NUM)) > 0) {
@@ -43,7 +45,12 @@ if ($_POST['submitted'] == 1) {
 				printf("Connect failed: %s\n", $con->connect_error);
 				exit();
 		}
-
+		
+		// Prevent SQL Injections
+		$id = $con->real_escape_string($id);
+		$email = $con->real_escape_string($email);
+		$pass = $con->real_escape_string($pass);
+		
 		$sql="INSERT INTO sessions (s_sid, s_email, s_pass)
 		VALUES
 		('$id','$email','$pass')";
@@ -54,6 +61,11 @@ if ($_POST['submitted'] == 1) {
 		//echo "1 record added"; // Debugging; will break html
 
 		mysqli_close($con);
+		
+		session_start();
+		$_SESSION['session'] = $id; // Automatically login
+		
+		include 'email/welcome.php';
 		
 		header( 'Location: admin.php?created=true' ) ;
 	}
