@@ -16,6 +16,20 @@
 	font-size:40px !important;
 	height:65px
 }
+
+#welcomer {
+	border-radius:15px;
+	text-align:center;
+	margin-bottom:60px;
+}
+/* Move centered welcomer down further */
+@media (min-width: 767px) {
+	#welcomer {
+		position:absolute;
+		top:40%;
+		margin-top:-120px;
+	}
+}
 .alpha50 {
 /* Fallback for web browsers that don't support RGBa */
 background-color: rgb(255, 255, 255);
