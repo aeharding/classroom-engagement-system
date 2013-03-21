@@ -1,5 +1,5 @@
 <?php
-	/* ONLY USED BY CREATE.PHP, expects:
+	/* ONLY USED BY ../CREATE.PHP, expects:
 			1. $email: Email of user
 			2. $id:		 Class session name
 			3. $pass:  Specified password for $id

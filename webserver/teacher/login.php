@@ -15,6 +15,11 @@
 		
 		$session = $_POST['sid'];
 		$pass = $_POST['pass'];
+		
+		// Prevent SQL Injections
+		$session = $con->real_escape_string($session);
+		$pass = $con->real_escape_string($pass);
+
 
 		$sql="SELECT count(1) FROM sessions WHERE s_sid='" . $session . "' AND s_pass='" . $pass . "'";
 
