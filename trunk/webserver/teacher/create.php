@@ -11,13 +11,13 @@ function checkID($con,$id_check) {
 }
 $continue = true;
 $reason_fail = "";
-if ($_POST['submitted'] == 1) {
+if ($_POST['ces_submitted'] == 1) {
 	include '../setup/connect.php';
 	$con = new mysqli($config_server, $config_user, $config_pass, $config_table);
-	$id = $_POST[sid];
-	$email = $_POST[email];
-	$pass = $_POST[pass];
-	$pass_ver = $_POST[pass_ver];
+	$id = $_POST['ces_sid'];
+	$email = $_POST['ces_email'];
+	$pass = $_POST['ces_pass'];
+	$pass_ver = $_POST['ces_pass_ver'];
 	if((!filter_var($email, FILTER_VALIDATE_EMAIL))) {
 		$continue = false;
 		$reason_fail .= "<br>Your email address is invalid.";
@@ -50,6 +50,8 @@ if ($_POST['submitted'] == 1) {
 		$id = $con->real_escape_string($id);
 		$email = $con->real_escape_string($email);
 		$pass = $con->real_escape_string($pass);
+		
+		$pass = md5(utf8_encode($pass));
 		
 		$sql="INSERT INTO sessions (s_sid, s_email, s_pass)
 		VALUES
@@ -140,23 +142,23 @@ if ($_POST['submitted'] == 1) {
 						<div style="max-width:300px;" class="center">
 							<div class="input-prepend" style="width:100%">
 								<span class="add-on"><i class="icon-book"></i></span>
-								<input id="inputIcon" type="text" name="sid" style="width:80%" placeholder="Class session ID Name">
+								<input id="inputIcon" type="text" name="ces_sid" autocomplete="off" style="width:80%" placeholder="Class session name">
 							</div>
 							<div class="input-prepend" style="width:100%">
 								<span class="add-on"><i class="icon-envelope"></i></span>
-								<input id="inputIcon" type="text" name="email" style="width:80%" placeholder="Your email">
+								<input id="inputIcon" type="text" name="ces_email" autocomplete="off" style="width:80%" placeholder="Your email">
 							</div>
 							<div class="input-prepend" style="width:100%">
 								<span class="add-on"><i class="icon-eye-close"></i></span>
-								<input id="inputIcon" type="password" name="pass" style="width:80%" placeholder="Password">
+								<input id="inputIcon" type="password" name="ces_pass" autocomplete="off" style="width:80%" placeholder="Password">
 							</div>
 							<div class="input-prepend" style="width:100%">
 								<span class="add-on"><i class="icon-repeat"></i></span>
-								<input id="inputIcon" type="password" name="pass_ver" style="width:80%" placeholder="Password verification">
+								<input id="inputIcon" type="password" name="ces_pass_ver" autocomplete="off" style="width:80%" placeholder="Password verification">
 							</div>
-							<input type="hidden" name="submitted" value="1">
+							<input type="hidden" name="ces_submitted" value="1">
 						</div>
-						<button class="btn btn-large btn-primary" type="submit">Create + Administrate</button>
+						<button class="btn btn-large btn-info" type="submit">Create + Administrate</button>
 					</form>
 				</div>
 			</div>

@@ -15,9 +15,8 @@
 	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 	
 	$message  = '<h3>Welcome to CES, the Classroom Engagement System!</h3><br>';
-	$message .= 'You can login <a href="' . $base_URL . '/teacher/login.php">here</a> with the credentials below:<br>';
+	$message .= 'You can login <a href="' . $base_URL . '/teacher/login.php">here</a>.<br>';
 	$message .= 'Class session name: <b>' . $id . '</b><br>';
-	$message .= 'Password: <b>' . $pass . '</b><br><br>';
 	$message .= '<h5>You will only recieve email when you request from now on. Cheers for less email spam!</h5>';
 
 	mail($email, $subject, $message, $headers);
