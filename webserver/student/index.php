@@ -82,6 +82,18 @@
 
     <script type="text/javascript" src="../js/bootstrap.js"></script>
     
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('#submit-loader')
+				.click(function () {
+						var btn = $(this)
+						btn.button('loading')
+						setTimeout(function () {
+								btn.button('reset')
+						}, 3000)
+				});
+			});
+    </script>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -135,7 +147,7 @@
 							</div>
 							<input type="hidden" name="ces_submitted" value="1">
 						</div>
-						<button class="btn btn-large btn-primary" type="submit">Join session</button>
+						<button class="btn btn-large btn-primary" type="submit" id="submit-loader" data-loading-text="Loading...">Join session</button>
 					</form>
 				</div>
 			</div>
