@@ -8,6 +8,6 @@
 		$result = $con->query($query);
 	}
 	session_destroy();
-	header("location:login.php");
+	header("location:../index.php");
 	
 ?>

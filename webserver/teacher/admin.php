@@ -67,7 +67,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="../index.php">CAS</a>
+          <a class="brand" href="../index.php">CES</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li><a href="../student/index.php">Join Session</a></li>
@@ -85,7 +85,7 @@
 					<?php
 						if($sessionActive) {
 							echo '<a href="toggleSession.php" class="btn btn-medium btn-warning"><i class="icon-off icon-white"></i> Close session</a>
-										<a href="logout.php" class="btn btn-medium btn-danger"><i class="icon-user icon-white"></i> Log out + close session</a>';
+										<a href="logout.php" class="btn btn-medium btn-danger"><i class="icon-user icon-white"></i> Log out + close</a>';
 						} else {
 							echo '<a href="toggleSession.php" class="btn btn-medium btn-success"><i class="icon-off icon-white"></i> Open session</a>
 										<a href="logout.php" class="btn btn-medium btn-danger"><i class="icon-user icon-white"></i> Log out</a>';
