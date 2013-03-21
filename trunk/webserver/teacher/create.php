@@ -1,7 +1,7 @@
 <?php
 	
 function checkID($con,$id_check) {
-	$id_check = $con->real_escape_string($id_check);
+	$id_check = $con->real_escape_string($id_check); // Prevent SQL Injections
 	$query = "SELECT * FROM sessions WHERE s_sid='" . $id_check . "'";
 	$result = $con->query($query);
 	if(count($result->fetch_array(MYSQLI_NUM)) > 0) {

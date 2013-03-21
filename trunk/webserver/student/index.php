@@ -14,13 +14,20 @@
 		$error = false;
 		$errorMsg = '';
 		
+		
 		if(strlen($student) > 4) {
+		
+			// Prevent SQL Injections
+			$session = $con->real_escape_string($session);
+			$student = $con->real_escape_string($student);
+			
 			$sql="SELECT count(1) FROM sessions WHERE s_sid='" . $session . "'";
 
 			if (!mysqli_query($con,$sql)) {
 				die('Error: ' . mysqli_error());
 			}
-			
+
+
 			$result = $con->query($sql);
 			$row = $result->fetch_array(MYSQLI_NUM);
 			$total = $row[0];
