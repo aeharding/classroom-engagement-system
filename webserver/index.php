@@ -44,7 +44,7 @@
 		<div id="wrap">
 			<div class="container-fluid">
 				<div class="row-fluid">
-					<div class="span6 offset3 alpha50" style="border-radius: 15px;text-align:center;margin-bottom:60px;">
+					<div class="span6 offset3 alpha50" id="welcomer">
 						<h1 class="friendly">Welcome to the next generation of classroom interaction.</h1>
 						<button class="btn btn-large btn-primary" type="button" onclick="parent.location='student/index.php'">Join a session <i class="icon-forward icon-white"></i></button>
 						<br><br>
