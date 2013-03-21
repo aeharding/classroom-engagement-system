@@ -1,4 +1,5 @@
 <?php
+	
 	// Basic MySQL connection information
 	$config_server = "localhost";
 	$config_user   = "appcooki_voteadm";
@@ -9,5 +10,5 @@
 	$base_URL      = "http://harding.ae/r2r";
 	$mail_sender   = "aeharding@wisc.edu";
 	$mail_replyto  = "aeharding@wisc.edu";
-	
+
 ?>

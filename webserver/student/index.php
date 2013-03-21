@@ -1,5 +1,5 @@
 <?php
-	if ($_POST['submitted'] == 1) {
+	if ($_POST['ces_submitted'] == 1) {
 		include '../setup/connect.php';
 		$con = new mysqli($config_server, $config_user, $config_pass, $config_table);
 		// Check connection
@@ -8,8 +8,8 @@
 				exit();
 		}
 		
-		$session = $_POST['session'];
-		$student = $_POST['student'];
+		$session = $_POST['ces_session'];
+		$student = $_POST['ces_student'];
 		
 		$error = false;
 		$errorMsg = '';
@@ -126,14 +126,14 @@
 						<h2>Enter details</h2>
 						<div style="max-width:300px;" class="center">
 							<div class="input-prepend" style="width:100%">
-								<span class="add-on"><i class="icon-user"></i></span>
-								<input id="inputIcon" type="text" name="student" style="width:80%" placeholder="Your student ID">
+								<span class="add-on"><i class="icon-book"></i></span>
+								<input id="inputIcon" type="text" name="ces_session" autocomplete="off" style="width:80%" placeholder="Class session name">
 							</div>
 							<div class="input-prepend" style="width:100%">
-								<span class="add-on"><i class="icon-book"></i></span>
-								<input id="inputIcon" type="text" name="session" style="width:80%" placeholder="Class session ID">
+								<span class="add-on"><i class="icon-user"></i></span>
+								<input id="inputIcon" type="text" name="ces_student" autocomplete="off" style="width:80%" placeholder="Your student ID">
 							</div>
-							<input type="hidden" name="submitted" value="1">
+							<input type="hidden" name="ces_submitted" value="1">
 						</div>
 						<button class="btn btn-large btn-primary" type="submit">Join session</button>
 					</form>
