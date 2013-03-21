@@ -73,7 +73,7 @@
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top" id="nav-ref">
+    <div class="navbar navbar-fixed-top" id="nav-ref">
       <div class="navbar-inner">
         <div class="container">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
