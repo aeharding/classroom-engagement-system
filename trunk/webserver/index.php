@@ -46,7 +46,7 @@
 			<div class="container-fluid">
 				<div class="row-fluid">
 					<div class="span6 offset3 alpha50" id="welcomer">
-						<h1 class="friendly">Welcome to the next generation of classroom interaction.</h1>
+						<h1 class="friendly" style="color:black">Welcome to the next generation of classroom interaction.</h1>
 						<button class="btn btn-large btn-primary" type="button" onclick="parent.location='student/index.php'">Join a session <i class="icon-forward icon-white"></i></button>
 						<br><br>
 						<button class="btn btn-large btn-info" type="button" onclick="parent.location='teacher/create.php'">Create a session <i class="icon-asterisk icon-white"></i></button>
