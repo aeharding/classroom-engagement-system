@@ -14,6 +14,8 @@
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
     
     <link href="css/cas.css" rel="stylesheet">
+    
+    <link href="css/home.css" rel="stylesheet">
 
     <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
 		
