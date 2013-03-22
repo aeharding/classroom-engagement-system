@@ -9,8 +9,18 @@ function checkID($con,$id_check) {
 	}
 	return true;
 }
+
 $continue = true;
+$invalid['ces_sid'] = false;
+$invalid['ces_email'] = false;
+$invalid['ces_pass'] = false;
+$invalid['ces_pass_ver'] = false;
 $reason_fail = "";
+$id = "";
+$email = "";
+$pass = "";
+$pass_ver = "";
+
 if ($_POST['ces_submitted'] == 1) {
 	include '../setup/connect.php';
 	$con = new mysqli($config_server, $config_user, $config_pass, $config_table);
@@ -20,22 +30,32 @@ if ($_POST['ces_submitted'] == 1) {
 	$pass_ver = $_POST['ces_pass_ver'];
 	if((!filter_var($email, FILTER_VALIDATE_EMAIL))) {
 		$continue = false;
+		$invalid['ces_email'] = true;
+		$email = "";
 		$reason_fail .= "<br>Your email address is invalid.";
 	}
 	if($pass != $pass_ver) {
 		$continue = false;
+		$invalid['ces_pass_ver'] = true;
+		$pass_ver = "";
 		$reason_fail .= "<br>Your entered password does not match.";
 	}
 	if(strlen($pass) < 5) {
 		$continue = false;
+		$invalid['ces_pass'] = true;
+		$pass = "";
 		$reason_fail .= "<br>Your entered password must be more than 5 characters.";
 	}
 	if(!checkID($con,$id)) {
 		$continue = false;
+		$invalid['ces_sid'] = true;
+		$id = "";
 		$reason_fail .= "<br>The session ID is already taken.";
 	}
 	if(strlen($id) < 3) {
 		$continue = false;
+		$invalid['ces_sid'] = true;
+		$id = "";
 		$reason_fail .= "<br>The session ID must be greater than three characters.";
 	}
 	
@@ -154,21 +174,21 @@ if ($_POST['ces_submitted'] == 1) {
 							<h2>Enter details</h2>
 							
 							<div style="max-width:300px;" class="center">
-								<div class="input-prepend" style="width:100%">
+								<div class="input-prepend<?php if($invalid['ces_sid']) echo ' control-group warning';?>" style="width:100%">
 									<span class="add-on"><i class="icon-book"></i></span>
-									<input id="inputIcon" type="text" name="ces_sid" autocomplete="off" style="width:80%" placeholder="Class session name">
+									<input id="inputIcon" type="text" name="ces_sid" autocomplete="off" style="width:80%" placeholder="Class session name" value="<?php echo $id; ?>">
 								</div>
-								<div class="input-prepend" style="width:100%">
+								<div class="input-prepend<?php if($invalid['ces_email']) echo ' control-group warning';?>" style="width:100%">
 									<span class="add-on"><i class="icon-envelope"></i></span>
-									<input id="inputIcon" type="text" name="ces_email" autocomplete="off" style="width:80%" placeholder="Your email">
+									<input id="inputIcon" type="text" name="ces_email" autocomplete="off" style="width:80%" placeholder="Your email" value="<?php echo $email; ?>">
 								</div>
-								<div class="input-prepend" style="width:100%">
+								<div class="input-prepend<?php if($invalid['ces_pass']) echo ' control-group warning';?>" style="width:100%">
 									<span class="add-on"><i class="icon-eye-close"></i></span>
-									<input id="inputIcon" type="password" name="ces_pass" autocomplete="off" style="width:80%" placeholder="Password">
+									<input id="inputIcon" type="password" name="ces_pass" autocomplete="off" style="width:80%" placeholder="Password" value="<?php echo $pass; ?>">
 								</div>
-								<div class="input-prepend" style="width:100%">
+								<div class="input-prepend<?php if($invalid['ces_pass_ver']||$invalid['ces_pass']) echo ' control-group warning';?>" style="width:100%">
 									<span class="add-on"><i class="icon-repeat"></i></span>
-									<input id="inputIcon" type="password" name="ces_pass_ver" autocomplete="off" style="width:80%" placeholder="Password verification">
+									<input id="inputIcon" type="password" name="ces_pass_ver" autocomplete="off" style="width:80%" placeholder="Password verification" value="<?php echo $pass_ver; ?>">
 								</div>
 								<input type="hidden" name="ces_submitted" value="1">
 							</div>

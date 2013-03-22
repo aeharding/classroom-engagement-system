@@ -85,6 +85,7 @@
 			<div class="container-fluid">
 				<div class="row-fluid">
 					<div class="span6 offset3 btn-group" style="text-align:center">
+						<h4>Session: <?php echo $_SESSION['session']; ?></h4>
 						<?php
 							if($sessionActive) {
 								echo '<a href="toggleSession.php" class="btn btn-medium btn-warning"><i class="icon-off icon-white"></i> Close session</a>
