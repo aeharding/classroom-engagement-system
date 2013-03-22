@@ -117,63 +117,73 @@ if ($_POST['ces_submitted'] == 1) {
   </head>
 
   <body>
-
-    <div class="navbar navbar-fixed-top" id="nav-ref">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="../index.php">CES</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li><a href="../student/index.php">Join Session</a></li>
-              <li class="active"><a href="create.php">Create Session</a></li>
-              <li><a href="admin.php">Administer Session</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
-
-    <div class="container-fluid">
-			<div class="row-fluid">
-				<div class="span6 offset3" style="text-align:center">
-					<?php
-						if(!$continue) {
-							echo '<div class="alert alert-error">
-											<button type="button" class="close" data-dismiss="alert">×</button><strong>Form not submitted.</strong> ' . $reason_fail . '
-										</div>';
-						}
-					?>
-					<form action="create.php" method="post">
-						<h2>Enter details</h2>
-						
-						<div style="max-width:300px;" class="center">
-							<div class="input-prepend" style="width:100%">
-								<span class="add-on"><i class="icon-book"></i></span>
-								<input id="inputIcon" type="text" name="ces_sid" autocomplete="off" style="width:80%" placeholder="Class session name">
-							</div>
-							<div class="input-prepend" style="width:100%">
-								<span class="add-on"><i class="icon-envelope"></i></span>
-								<input id="inputIcon" type="text" name="ces_email" autocomplete="off" style="width:80%" placeholder="Your email">
-							</div>
-							<div class="input-prepend" style="width:100%">
-								<span class="add-on"><i class="icon-eye-close"></i></span>
-								<input id="inputIcon" type="password" name="ces_pass" autocomplete="off" style="width:80%" placeholder="Password">
-							</div>
-							<div class="input-prepend" style="width:100%">
-								<span class="add-on"><i class="icon-repeat"></i></span>
-								<input id="inputIcon" type="password" name="ces_pass_ver" autocomplete="off" style="width:80%" placeholder="Password verification">
-							</div>
-							<input type="hidden" name="ces_submitted" value="1">
-						</div>
-						<button class="btn btn-large btn-info" type="submit" id="submit-loader" data-loading-text="Loading...">Create + Administrate</button>
-					</form>
+  
+		<div id="wrap">
+			<div id="spacer-nav-fix"></div>
+			<div class="navbar navbar-fixed-top" id="nav-ref">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="brand" href="../index.php">CES</a>
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li><a href="../student/index.php">Join Session</a></li>
+								<li class="active"><a href="create.php">Create Session</a></li>
+								<li><a href="admin.php">Administer Session</a></li>
+							</ul>
+						</div><!--/.nav-collapse -->
+					</div>
 				</div>
 			</div>
-		</div> <!-- /container -->
+
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span6 offset3" style="text-align:center">
+						<?php
+							if(!$continue) {
+								echo '<div class="alert alert-error">
+												<button type="button" class="close" data-dismiss="alert">×</button><strong>Form not submitted.</strong> ' . $reason_fail . '
+											</div>';
+							}
+						?>
+						<form action="create.php" method="post">
+							<h2>Enter details</h2>
+							
+							<div style="max-width:300px;" class="center">
+								<div class="input-prepend" style="width:100%">
+									<span class="add-on"><i class="icon-book"></i></span>
+									<input id="inputIcon" type="text" name="ces_sid" autocomplete="off" style="width:80%" placeholder="Class session name">
+								</div>
+								<div class="input-prepend" style="width:100%">
+									<span class="add-on"><i class="icon-envelope"></i></span>
+									<input id="inputIcon" type="text" name="ces_email" autocomplete="off" style="width:80%" placeholder="Your email">
+								</div>
+								<div class="input-prepend" style="width:100%">
+									<span class="add-on"><i class="icon-eye-close"></i></span>
+									<input id="inputIcon" type="password" name="ces_pass" autocomplete="off" style="width:80%" placeholder="Password">
+								</div>
+								<div class="input-prepend" style="width:100%">
+									<span class="add-on"><i class="icon-repeat"></i></span>
+									<input id="inputIcon" type="password" name="ces_pass_ver" autocomplete="off" style="width:80%" placeholder="Password verification">
+								</div>
+								<input type="hidden" name="ces_submitted" value="1">
+							</div>
+							<button class="btn btn-large btn-info" type="submit" id="submit-loader" data-loading-text="Loading...">Create + Administrate</button>
+						</form>
+					</div>
+				</div>
+			</div> <!-- /container -->
+			<div id="push"></div> <!-- Footer pusher -->
+		</div> <!-- /wrap -->
+		
+		<div id="footer">
+      <div class="container-fluid">
+        <p class="muted credit" style="text-align:center">&copy; 2013 <a href="http://wiki.gpii.net/index.php/R2R" target="_blank">R2R</a> and <a href="http://trace.wisc.edu" target="_blank">Trace R&amp;D Center</a></p>
+      </div>
+    </div>
   </body>
 </html>

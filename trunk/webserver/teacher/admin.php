@@ -58,100 +58,112 @@
   </head>
 
   <body>
+  
+		<div id="wrap">
+			<div id="spacer-nav-fix"></div>
+			<div class="navbar navbar-fixed-top" id="nav-ref">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="brand" href="../index.php">CES</a>
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li><a href="../student/index.php">Join Session</a></li>
+								<li><a href="create.php">Create Session</a></li>
+								<li class="active"><a href="admin.php">Administer Session</a></li>
+							</ul>
+						</div><!--/.nav-collapse -->
+					</div>
+				</div>
+			</div>
 
-    <div class="navbar navbar-fixed-top" id="nav-ref">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="../index.php">CES</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li><a href="../student/index.php">Join Session</a></li>
-              <li><a href="create.php">Create Session</a></li>
-              <li class="active"><a href="admin.php">Administer Session</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span6 offset3 btn-group" style="text-align:center">
+						<?php
+							if($sessionActive) {
+								echo '<a href="toggleSession.php" class="btn btn-medium btn-warning"><i class="icon-off icon-white"></i> Close session</a>
+											<a href="logout.php" class="btn btn-medium btn-danger"><i class="icon-user icon-white"></i> Log out + close</a>';
+							} else {
+								echo '<a href="toggleSession.php" class="btn btn-medium btn-success"><i class="icon-off icon-white"></i> Open session</a>
+											<a href="logout.php" class="btn btn-medium btn-danger"><i class="icon-user icon-white"></i> Log out</a>';
+							}
+						?>
+						
+					</div>
+				</div>
+				<hr>
+				<div class="row-fluid">
+					<div class="span4" style="text-align:center">
+						<form action="admin.php" method="post" name="newQuestion">
+							<h3>Create new question</h3>
+							<div style="max-width:300px;" class="center">
+								<input type="text" class="input-block-level" name="description" placeholder="Question description [optional]">
+								<select class="span12" name="answerType" onchange="correctAnswerUpdate();">
+									<option value="mult">Multiple choice [A-E]</option>
+									<option value="bool">Boolean [true/false]</option>
+									<option value="resp">Short answer</option>
+								</select>
+								<span id="corrAnswerMod">
+									Correct answer:
+									<select class="span4">
+										<option value="none">None</option>
+										<option value="a">A</option>
+										<option value="b">B</option>
+										<option value="c">C</option>
+										<option value="d">D</option>
+										<option value="e">E</option>
+									</select>
+								</span>
+								<input type="hidden" name="submitted" value="1">
+							</div>
+							<button class="btn btn-large btn-primary" type="submit">Create question</button>
+						</form>
+					</div>
+					<div class="span4" style="text-align:center">
+						<h3>Current question</h3>
+					</div>
+					<div class="span4" style="text-align:center">
+						<h3>Old questions</h3>
+						<button class="btn btn-info btn-small dropdown-toggle"><i class="icon-download-alt icon-white"></i> Download all in .csv</button>
+						<br><br>
+						<table class="table table-striped">
+							<tr>
+								<td><strong>Date</strong></td>
+								<td><strong>Type</strong></td>
+								<td><strong>More</strong></td>
+							</tr>
+							<tr>
+								<td>3/21/12 at 1:20 PM</td>
+								<td>A-E</td>
+								<td>
+									<div class="btn-group">
+										<button class="btn btn-small dropdown-toggle" data-toggle="dropdown">Options <span class="caret"></span></button>
+										<ul class="dropdown-menu pull-right">
+											<li><a href="#"><i class="icon-bullhorn"></i> Results</a></li>
+											<li><a href="#"><i class="icon-play"></i> Resume</a></li>
+											<li><a href="#"><i class="icon-download-alt"></i> Download .csv</a></li>
+											<li class="divider"></li>
+											<li><a href="#"><i class="icon-remove-sign"></i> Delete</a></li>
+										</ul>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div> <!-- /container -->
+			<div id="push"></div> <!-- Footer pusher -->
+		</div> <!-- /wrap -->
+		
+		<div id="footer">
+      <div class="container-fluid">
+        <p class="muted credit" style="text-align:center">&copy; 2013 <a href="http://wiki.gpii.net/index.php/R2R" target="_blank">R2R</a> and <a href="http://trace.wisc.edu" target="_blank">Trace R&amp;D Center</a></p>
       </div>
     </div>
-
-    <div class="container-fluid">
-			<div class="row-fluid">
-				<div class="span6 offset3 btn-group" style="text-align:center">
-					<?php
-						if($sessionActive) {
-							echo '<a href="toggleSession.php" class="btn btn-medium btn-warning"><i class="icon-off icon-white"></i> Close session</a>
-										<a href="logout.php" class="btn btn-medium btn-danger"><i class="icon-user icon-white"></i> Log out + close</a>';
-						} else {
-							echo '<a href="toggleSession.php" class="btn btn-medium btn-success"><i class="icon-off icon-white"></i> Open session</a>
-										<a href="logout.php" class="btn btn-medium btn-danger"><i class="icon-user icon-white"></i> Log out</a>';
-						}
-					?>
-					
-				</div>
-			</div>
-			<hr>
-			<div class="row-fluid">
-				<div class="span4" style="text-align:center">
-					<form action="admin.php" method="post" name="newQuestion">
-						<h3>Create new question</h3>
-						<div style="max-width:300px;" class="center">
-							<input type="text" class="input-block-level" name="description" placeholder="Question description [optional]">
-							<select class="span12" name="answerType" onchange="correctAnswerUpdate();">
-								<option value="mult">Multiple choice [A-E]</option>
-								<option value="bool">Boolean [true/false]</option>
-								<option value="resp">Short answer</option>
-							</select>
-							<span id="corrAnswerMod">
-								Correct answer:
-								<select class="span4">
-									<option value="none">None</option>
-									<option value="a">A</option>
-									<option value="b">B</option>
-									<option value="c">C</option>
-									<option value="d">D</option>
-									<option value="e">E</option>
-								</select>
-							</span>
-							<input type="hidden" name="submitted" value="1">
-						</div>
-						<button class="btn btn-large btn-primary" type="submit">Create question</button>
-					</form>
-				</div>
-				<div class="span4" style="text-align:center">
-					<h3>Current question</h3>
-				</div>
-				<div class="span4" style="text-align:center">
-					<h3>Old questions</h3>
-					<table class="table table-striped">
-						<tr>
-							<td>Question type</td>
-							<td>Date</td>
-							<td>Options</td>
-						</tr>
-						<tr>
-							<td>A-E</td>
-							<td>3/21/12 at 1:20 PM</td>
-							<td>
-								<div class="btn-group pull-right">
-									<button class="btn btn-small dropdown-toggle" data-toggle="dropdown">Options <span class="caret"></span></button>
-									<ul class="dropdown-menu">
-										<li><a href="#">Action</a></li>
-										<li><a href="#">Another action</a></li>
-										<li><a href="#">Something else here</a></li>
-										<li class="divider"></li>
-										<li><a href="#">Separated link</a></li>
-									</ul>
-								</div>
-							</td>
-						</tr>
-					</table>
-				</div>
-			</div>
-		</div> <!-- /container -->
   </body>
 </html>
