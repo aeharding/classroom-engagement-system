@@ -15,6 +15,7 @@
 	$con = new mysqli($config_server, $config_user, $config_pass, $config_table);
 	$query = "UPDATE sessions SET s_isOpen='" . $_SESSION['sessionActive'] . "' WHERE s_sid='" . $_SESSION['session'] . "'";
 	$result = $con->query($query);
+	
 ?>
 <html lang="en">
   <head>
@@ -41,9 +42,9 @@
     <script>
     function correctAnswerUpdate() {
 			if(document.newQuestion.answerType.value == "mult") {
-				document.getElementById('corrAnswerMod').innerHTML = 'Correct answer: <select class="span4"><option value="none">None</option><option value="a">A</option><option value="b">B</option><option value="c">C</option><option value="d">D</option><option value="e">E</option></select>';
+				document.getElementById('corrAnswerMod').innerHTML = 'Correct answer: <select class="span4" name="corrAnswer"><option value="none">None</option><option value="a">A</option><option value="b">B</option><option value="c">C</option><option value="d">D</option><option value="e">E</option></select>';
 			} else if(document.newQuestion.answerType.value == "bool") {
-				document.getElementById('corrAnswerMod').innerHTML = 'Correct answer: <select class="span4"><option value="none">None</option><option value="true">True</option><option value="false">False</option></select>';
+				document.getElementById('corrAnswerMod').innerHTML = 'Correct answer: <select class="span4" name="corrAnswer"><option value="none">None</option><option value="true">True</option><option value="false">False</option></select>';
 			} else if(document.newQuestion.answerType.value == "resp") {
 				document.getElementById('corrAnswerMod').innerHTML = '';
 			}
@@ -99,7 +100,7 @@
 				<hr>
 				<div class="row-fluid">
 					<div class="span4" style="text-align:center">
-						<form action="admin.php" method="post" name="newQuestion">
+						<form action="newQuestion.php" method="post" name="newQuestion">
 							<h3>Create new question</h3>
 							<div style="max-width:300px;" class="center">
 								<input type="text" class="input-block-level" name="description" placeholder="Question description [optional]">
@@ -110,7 +111,7 @@
 								</select>
 								<span id="corrAnswerMod">
 									Correct answer:
-									<select class="span4">
+									<select class="span4" name="corrAnswer">
 										<option value="none">None</option>
 										<option value="a">A</option>
 										<option value="b">B</option>
@@ -119,7 +120,7 @@
 										<option value="e">E</option>
 									</select>
 								</span>
-								<input type="hidden" name="submitted" value="1">
+								<input type="hidden" name="ces_submitted" value="1">
 							</div>
 							<button class="btn btn-large btn-primary" type="submit">Create question</button>
 						</form>

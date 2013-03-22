@@ -64,6 +64,7 @@
 	s_sid CHAR(30),
 	s_qtype CHAR(4),
 	s_correct CHAR(1),
+	s_time CHAR(150),
 	s_qdesc CHAR(150)
 	)";
 
