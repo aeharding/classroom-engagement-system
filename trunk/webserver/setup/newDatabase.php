@@ -62,6 +62,7 @@
 	PID INT NOT NULL AUTO_INCREMENT, 
 	PRIMARY KEY(PID),
 	s_sid CHAR(30),
+	s_open TINYINT(1) NOT NULL DEFAULT '1',
 	s_qtype CHAR(4),
 	s_correct CHAR(1),
 	s_time CHAR(150),
