@@ -124,9 +124,14 @@
 							<button class="btn btn-large btn-primary" type="submit">Create question</button>
 						</form>
 					</div>
+					<hr class="visible-phone">
 					<div class="span4" style="text-align:center">
 						<h3>Current question</h3>
+						<h4>Opened <strong class="text-warning">7</strong> minutes ago.<h4>
+						<h4><strong class="text-warning">16</strong> students have answered.</h4>
+						<button class="btn btn-danger btn-large"><i class="icon-stop icon-white"></i> Close question</button>
 					</div>
+					<hr class="visible-phone">
 					<div class="span4" style="text-align:center">
 						<h3>Old questions</h3>
 						<button class="btn btn-info btn-small dropdown-toggle"><i class="icon-download-alt icon-white"></i> Download all in .csv</button>
@@ -140,6 +145,22 @@
 							<tr>
 								<td>3/21/12 at 1:20 PM</td>
 								<td>A-E</td>
+								<td>
+									<div class="btn-group">
+										<button class="btn btn-small dropdown-toggle" data-toggle="dropdown">Options <span class="caret"></span></button>
+										<ul class="dropdown-menu pull-right">
+											<li><a href="#"><i class="icon-bullhorn"></i> Results</a></li>
+											<li><a href="#"><i class="icon-play"></i> Resume</a></li>
+											<li><a href="#"><i class="icon-download-alt"></i> Download .csv</a></li>
+											<li class="divider"></li>
+											<li><a href="#"><i class="icon-remove-sign"></i> Delete</a></li>
+										</ul>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>3/20/12 at 1:00 PM</td>
+								<td>True/False</td>
 								<td>
 									<div class="btn-group">
 										<button class="btn btn-small dropdown-toggle" data-toggle="dropdown">Options <span class="caret"></span></button>
