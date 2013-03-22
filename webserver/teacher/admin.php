@@ -61,7 +61,7 @@
 
     <div class="navbar navbar-fixed-top" id="nav-ref">
       <div class="navbar-inner">
-        <div class="container">
+        <div class="container-fluid">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -96,7 +96,7 @@
 			</div>
 			<hr>
 			<div class="row-fluid">
-				<div class="span6 offset3" style="text-align:center">
+				<div class="span4" style="text-align:center">
 					<form action="admin.php" method="post" name="newQuestion">
 						<h3>Create new question</h3>
 						<div style="max-width:300px;" class="center">
@@ -122,17 +122,34 @@
 						<button class="btn btn-large btn-primary" type="submit">Create question</button>
 					</form>
 				</div>
-			</div>
-			<hr>
-			<div class="row-fluid">
-				<div class="span6 offset3" style="text-align:center">
+				<div class="span4" style="text-align:center">
 					<h3>Current question</h3>
 				</div>
-			</div>
-			<hr>
-			<div class="row-fluid">
-				<div class="span6 offset3" style="text-align:center">
+				<div class="span4" style="text-align:center">
 					<h3>Old questions</h3>
+					<table class="table table-striped">
+						<tr>
+							<td>Question type</td>
+							<td>Date</td>
+							<td>Options</td>
+						</tr>
+						<tr>
+							<td>A-E</td>
+							<td>3/21/12 at 1:20 PM</td>
+							<td>
+								<div class="btn-group pull-right">
+									<button class="btn btn-small dropdown-toggle" data-toggle="dropdown">Options <span class="caret"></span></button>
+									<ul class="dropdown-menu">
+										<li><a href="#">Action</a></li>
+										<li><a href="#">Another action</a></li>
+										<li><a href="#">Something else here</a></li>
+										<li class="divider"></li>
+										<li><a href="#">Separated link</a></li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 		</div> <!-- /container -->
