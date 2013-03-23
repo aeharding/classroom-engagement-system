@@ -84,18 +84,19 @@
 
 			<div class="container-fluid">
 				<div class="row-fluid">
-					<h4>Session: <?php echo $_SESSION['session']; ?></h4>
-					<div class="span6 offset3 btn-group" style="text-align:center">
-						<?php
-							if($sessionActive) {
-								echo '<a href="toggleSession.php" class="btn btn-medium btn-warning"><i class="icon-off icon-white"></i> Close session</a>
-											<a href="logout.php" class="btn btn-medium btn-danger"><i class="icon-user icon-white"></i> Log out + close</a>';
-							} else {
-								echo '<a href="toggleSession.php" class="btn btn-medium btn-success"><i class="icon-off icon-white"></i> Open session</a>
-											<a href="logout.php" class="btn btn-medium btn-danger"><i class="icon-user icon-white"></i> Log out</a>';
-							}
-						?>
-						
+					<div class="span12" style="text-align:center">
+						<h4>Session: <?php echo $_SESSION['session']; ?></h4>
+						<div class="btn-group">
+							<?php
+								if($sessionActive) {
+									echo '<a href="toggleSession.php" class="btn btn-medium btn-warning"><i class="icon-off icon-white"></i> Close session</a>
+												<a href="logout.php" class="btn btn-medium btn-danger"><i class="icon-user icon-white"></i> Log out + close</a>';
+								} else {
+									echo '<a href="toggleSession.php" class="btn btn-medium btn-success"><i class="icon-off icon-white"></i> Open session</a>
+												<a href="logout.php" class="btn btn-medium btn-danger"><i class="icon-user icon-white"></i> Log out</a>';
+								}
+							?>
+						</div>
 					</div>
 				</div>
 				<hr>
