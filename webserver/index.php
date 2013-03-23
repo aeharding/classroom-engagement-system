@@ -61,7 +61,7 @@
     </div> <!-- /wrap for footer -->
 		<div id="footer">
       <div class="container-fluid">
-        <p class="muted"><br>Created by Research to Reality <a href="http://wiki.gpii.net/index.php/R2R">[about us]</a>
+        <p class="muted"><br>Created by Research to Reality <a href="http://wiki.gpii.net/index.php/R2R" target="_blank">[about us]</a>
       </div>
     </div>
     

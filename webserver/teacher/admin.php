@@ -15,7 +15,7 @@
 	$con = new mysqli($config_server, $config_user, $config_pass, $config_table);
 	$query = "UPDATE sessions SET s_isOpen='" . $_SESSION['sessionActive'] . "' WHERE s_sid='" . $_SESSION['session'] . "'";
 	$result = $con->query($query);
-	
+		
 ?>
 <html lang="en">
   <head>
@@ -144,38 +144,7 @@
 								<td><strong>Type</strong></td>
 								<td><strong>More</strong></td>
 							</tr>
-							<tr>
-								<td>3/21/12 at 1:20 PM</td>
-								<td>A-E</td>
-								<td>
-									<div class="btn-group">
-										<button class="btn btn-small dropdown-toggle" data-toggle="dropdown">Options <span class="caret"></span></button>
-										<ul class="dropdown-menu pull-right">
-											<li><a href="#"><i class="icon-bullhorn"></i> Results</a></li>
-											<li><a href="#"><i class="icon-play"></i> Resume</a></li>
-											<li><a href="#"><i class="icon-download-alt"></i> Download .csv</a></li>
-											<li class="divider"></li>
-											<li><a href="#"><i class="icon-remove-sign"></i> Delete</a></li>
-										</ul>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>3/20/12 at 1:00 PM</td>
-								<td>True/False</td>
-								<td>
-									<div class="btn-group">
-										<button class="btn btn-small dropdown-toggle" data-toggle="dropdown">Options <span class="caret"></span></button>
-										<ul class="dropdown-menu pull-right">
-											<li><a href="#"><i class="icon-bullhorn"></i> Results</a></li>
-											<li><a href="#"><i class="icon-play"></i> Resume</a></li>
-											<li><a href="#"><i class="icon-download-alt"></i> Download .csv</a></li>
-											<li class="divider"></li>
-											<li><a href="#"><i class="icon-remove-sign"></i> Delete</a></li>
-										</ul>
-									</div>
-								</td>
-							</tr>
+							<?php include 'tabulate.php'; ?>
 						</table>
 					</div>
 				</div>
