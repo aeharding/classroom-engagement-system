@@ -8,6 +8,8 @@
     <meta name="author" content="">
     <!-- Le styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/font-awesome.min.css">
 
     <script type="text/javascript" src="js/ie-mobile-fix.js"></script>
     
@@ -49,11 +51,11 @@
 				<div class="row-fluid">
 					<div class="span6 offset3 alpha50" id="welcomer">
 						<h1 class="friendly" style="color:black">Welcome to the next generation of classroom interaction.</h1>
-						<button class="btn btn-large btn-primary" type="button" onclick="parent.location='student/index.php'">Join a session <i class="icon-forward icon-white"></i></button>
+						<button class="btn btn-large btn-primary" type="button" onclick="parent.location='student/index.php'">Join a session&nbsp;&nbsp;<i class="icon-forward icon-white"></i></button>
 						<br><br>
-						<button class="btn btn-large btn-info" type="button" onclick="parent.location='teacher/create.php'">Create a session <i class="icon-asterisk icon-white"></i></button>
+						<button class="btn btn-large btn-info" type="button" onclick="parent.location='teacher/create.php'">Create a session&nbsp;&nbsp;<i class="icon-asterisk icon-white"></i></button>
 						<br><br>
-						<button class="btn btn-large btn-danger" type="button" onclick="parent.location='teacher/admin.php'">Administer a session <i class="icon-wrench icon-white"></i></button>
+						<button class="btn btn-large btn-danger" type="button" onclick="parent.location='teacher/admin.php'">Administer a session&nbsp;&nbsp;<i class="icon-wrench icon-white"></i></button>
 						<br><br>
 					</div>
 				</div>

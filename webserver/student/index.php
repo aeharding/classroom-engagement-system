@@ -69,6 +69,8 @@
     <meta name="author" content="">
     <!-- Le styles -->
     <link href="../css/bootstrap.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
 
     <script type="text/javascript" src="../js/ie-mobile-fix.js"></script>
     
