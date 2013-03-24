@@ -84,12 +84,12 @@
 									<li class="dropdown">
 											<?php
 												if($sessionActive) {
-													echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-group" style="color:green"></i> '.$_SESSION['session'].' <b class="caret"></b></a>
+													echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book" style="color:green"></i> '.$_SESSION['session'].' <b class="caret"></b></a>
 																<ul class="dropdown-menu pull-right">
 																	<li><a href="toggleSession.php"><i class="icon-off"></i> Close session</a></li>
 																	<li><a href="logout.php"><i class="icon-user"></i> Log out + close</a></li>';
 												} else {
-													echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-group" style="color:red"></i> '.$_SESSION['session'].' <b class="caret"></b></a>
+													echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book" style="color:red"></i> '.$_SESSION['session'].' <b class="caret"></b></a>
 																<ul class="dropdown-menu pull-right">
 																	<li><a href="toggleSession.php"><i class="icon-off"></i> Open session</a></li>
 																	<li><a href="logout.php"><i class="icon-user"></i> Log out</a></li>';
