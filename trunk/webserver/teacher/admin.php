@@ -26,6 +26,8 @@
     <meta name="author" content="">
     <!-- Le styles -->
     <link href="../css/bootstrap.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
 
     <script type="text/javascript" src="../js/ie-mobile-fix.js"></script>
     
@@ -77,29 +79,32 @@
 								<li><a href="create.php">Create Session</a></li>
 								<li class="active"><a href="admin.php">Administer Session</a></li>
 							</ul>
+							<div style="display:inline-block" class="navbar-pull-right">
+								<ul class="nav">
+									<li class="dropdown">
+											<?php
+												if($sessionActive) {
+													echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-group" style="color:green"></i> '.$_SESSION['session'].' <b class="caret"></b></a>
+																<ul class="dropdown-menu pull-right">
+																	<li><a href="toggleSession.php"><i class="icon-off"></i> Close session</a></li>
+																	<li><a href="logout.php"><i class="icon-user"></i> Log out + close</a></li>';
+												} else {
+													echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-group" style="color:red"></i> '.$_SESSION['session'].' <b class="caret"></b></a>
+																<ul class="dropdown-menu pull-right">
+																	<li><a href="toggleSession.php"><i class="icon-off"></i> Open session</a></li>
+																	<li><a href="logout.php"><i class="icon-user"></i> Log out</a></li>';
+												}
+											?>
+										</ul>
+									</li>
+								</ul>
+							</div>
 						</div><!--/.nav-collapse -->
 					</div>
 				</div>
 			</div>
 
 			<div class="container-fluid">
-				<div class="row-fluid">
-					<div class="span12" style="text-align:center">
-						<h4>Session: <?php echo $_SESSION['session']; ?></h4>
-						<div class="btn-group">
-							<?php
-								if($sessionActive) {
-									echo '<a href="toggleSession.php" class="btn btn-medium btn-warning"><i class="icon-off icon-white"></i> Close session</a>
-												<a href="logout.php" class="btn btn-medium btn-danger"><i class="icon-user icon-white"></i> Log out + close</a>';
-								} else {
-									echo '<a href="toggleSession.php" class="btn btn-medium btn-success"><i class="icon-off icon-white"></i> Open session</a>
-												<a href="logout.php" class="btn btn-medium btn-danger"><i class="icon-user icon-white"></i> Log out</a>';
-								}
-							?>
-						</div>
-					</div>
-				</div>
-				<hr>
 				<div class="row-fluid">
 					<div class="span4" style="text-align:center">
 						<form action="newQuestion.php" method="post" name="newQuestion">
