@@ -185,7 +185,7 @@ if ($_POST['ces_submitted'] == 1) {
 									<input id="inputIcon" type="text" name="ces_email" autocomplete="off" style="width:80%" placeholder="Your email" value="<?php echo $email; ?>">
 								</div>
 								<div class="input-prepend<?php if($invalid['ces_pass']) echo ' control-group warning';?>" style="width:100%">
-									<span class="add-on"><i class="icon-eye-close"></i></span>
+									<span class="add-on"><i class="icon-key"></i></span>
 									<input id="inputIcon" type="password" name="ces_pass" autocomplete="off" style="width:80%" placeholder="Password" value="<?php echo $pass; ?>">
 								</div>
 								<div class="input-prepend<?php if($invalid['ces_pass_ver']||$invalid['ces_pass']) echo ' control-group warning';?>" style="width:100%">

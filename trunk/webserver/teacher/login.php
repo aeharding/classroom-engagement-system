@@ -131,7 +131,7 @@
 									<input id="inputIcon" type="text" name="ces_sid" autocomplete="off" style="width:80%" placeholder="Class session name">
 								</div>
 								<div class="input-prepend" style="width:100%">
-									<span class="add-on"><i class="icon-eye-close"></i></span>
+									<span class="add-on"><i class="icon-key"></i></span>
 									<input id="inputIcon" type="password" name="ces_pass" autocomplete="off" style="width:80%" placeholder="Password">
 								</div>
 								<input type="hidden" name="ces_submitted" value="1">
