@@ -51,8 +51,7 @@ if ($_POST['ces_submitted'] == 1) {
 		$invalid['ces_sid'] = true;
 		$id = "";
 		$reason_fail .= "<br>The session ID is already taken.";
-	}
-	if(strlen($id) < 3) {
+	} else if(strlen($id) < 3) {
 		$continue = false;
 		$invalid['ces_sid'] = true;
 		$id = "";
@@ -178,19 +177,19 @@ if ($_POST['ces_submitted'] == 1) {
 							<div style="max-width:300px;" class="center">
 								<div class="input-prepend<?php if($invalid['ces_sid']) echo ' control-group warning';?>" style="width:100%">
 									<span class="add-on"><i class="icon-book"></i></span>
-									<input id="inputIcon" type="text" name="ces_sid" autocomplete="off" style="width:80%" placeholder="Class session name" value="<?php echo $id; ?>">
+									<input id="inputIcon" type="text" name="ces_sid" autocomplete="off" <?php if($invalid['ces_sid'] || (!$invalid['ces_email'] && !$invalid['ces_pass'] && !$invalid['ces_pass_ver'])) echo 'autofocus'; ?> style="width:80%" placeholder="Class session name" value="<?php echo $id; ?>">
 								</div>
 								<div class="input-prepend<?php if($invalid['ces_email']) echo ' control-group warning';?>" style="width:100%">
 									<span class="add-on"><i class="icon-envelope"></i></span>
-									<input id="inputIcon" type="text" name="ces_email" autocomplete="off" style="width:80%" placeholder="Your email" value="<?php echo $email; ?>">
+									<input id="inputIcon" type="text" name="ces_email" autocomplete="off" <?php if($invalid['ces_email'] && !$invalid['ces_sid']) echo 'autofocus'; ?> style="width:80%" placeholder="Your email" value="<?php echo $email; ?>">
 								</div>
 								<div class="input-prepend<?php if($invalid['ces_pass']) echo ' control-group warning';?>" style="width:100%">
 									<span class="add-on"><i class="icon-key"></i></span>
-									<input id="inputIcon" type="password" name="ces_pass" autocomplete="off" style="width:80%" placeholder="Password" value="<?php echo $pass; ?>">
+									<input id="inputIcon" type="password" name="ces_pass" autocomplete="off" <?php if($invalid['ces_pass'] && !$invalid['ces_sid'] && !$invalid['ces_email']) echo 'autofocus'; ?> style="width:80%" placeholder="Password" value="<?php echo $pass; ?>">
 								</div>
 								<div class="input-prepend<?php if($invalid['ces_pass_ver']||$invalid['ces_pass']) echo ' control-group warning';?>" style="width:100%">
 									<span class="add-on"><i class="icon-repeat"></i></span>
-									<input id="inputIcon" type="password" name="ces_pass_ver" autocomplete="off" style="width:80%" placeholder="Password verification" value="<?php echo $pass_ver; ?>">
+									<input id="inputIcon" type="password" name="ces_pass_ver" autocomplete="off" <?php if($invalid['ces_pass_ver'] && !$invalid['ces_pass'] && !$invalid['ces_sid'] && !$invalid['ces_email']) echo 'autofocus'; ?> style="width:80%" placeholder="Password verification" value="<?php echo $pass_ver; ?>">
 								</div>
 								<input type="hidden" name="ces_submitted" value="1">
 							</div>
