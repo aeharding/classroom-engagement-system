@@ -3,19 +3,8 @@
 	if(!isset($_SESSION['session'])) {
 		session_destroy();
 		header("location:login.php");
-	} else {
-		$sessionActive = false;
-		if(isset($_SESSION['sessionActive'])) {
-			$sessionActive = $_SESSION['sessionActive'];
-		} else {
-			$_SESSION['sessionActive'] = false;
-		}
 	}
-	include '../setup/connect.php';
-	$con = new mysqli($config_server, $config_user, $config_pass, $config_table);
-	$query = "UPDATE sessions SET s_isOpen='" . $_SESSION['sessionActive'] . "' WHERE s_sid='" . $_SESSION['session'] . "'";
-	$result = $con->query($query);
-		
+	include '../setup/connect.php';		
 ?>
 <html lang="en">
   <head>
@@ -79,26 +68,19 @@
 								<li><a href="create.php">Create Session</a></li>
 								<li class="active"><a href="admin.php">Administer Session</a></li>
 							</ul>
+							<?php if(isset($_SESSION['session'])) echo '
 							<div style="display:inline-block" class="navbar-pull-right">
 								<ul class="nav">
 									<li class="dropdown">
-											<?php
-												if($sessionActive) {
-													echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book" style="color:green"></i> '.$_SESSION['session'].' <b class="caret"></b></a>
-																<ul class="dropdown-menu pull-right">
-																	<li><a href="toggleSession.php"><i class="icon-off"></i> Close session</a></li>
-																	<li><a href="logout.php"><i class="icon-user"></i> Log out + close</a></li>';
-												} else {
-													echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book" style="color:red"></i> '.$_SESSION['session'].' <b class="caret"></b></a>
-																<ul class="dropdown-menu pull-right">
-																	<li><a href="toggleSession.php"><i class="icon-off"></i> Open session</a></li>
-																	<li><a href="logout.php"><i class="icon-user"></i> Log out</a></li>';
-												}
-											?>
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book"></i> '.$_SESSION['session'].' <b class="caret"></b></a>
+										<ul class="dropdown-menu pull-right">
+											<li><a href="logout.php"><i class="icon-user"></i> Log out</a></li>
+											<li><a href="settings.php"><i class="icon-cogs"></i> Settings</a></li>
 										</ul>
 									</li>
 								</ul>
 							</div>
+							'; ?>
 						</div><!--/.nav-collapse -->
 					</div>
 				</div>
