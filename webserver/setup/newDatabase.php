@@ -21,7 +21,6 @@
 	s_sid CHAR(30),
 	s_desc CHAR(50),
 	s_email CHAR(150),
-	s_isOpen TINYINT(1) NOT NULL DEFAULT '0',
 	s_pass CHAR(32)
 	)";
 

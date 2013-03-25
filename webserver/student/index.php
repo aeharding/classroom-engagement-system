@@ -1,4 +1,6 @@
 <?php
+	session_start();
+	
 	$invalid['ces_session'] = false;
 	$invalid['ces_student'] = false;
 	
@@ -34,24 +36,9 @@
 			$result = $con->query($sql);
 			$row = $result->fetch_array(MYSQLI_NUM);
 			$total = $row[0];
-			if($total == 1) {
-				$sql="SELECT count(1) FROM sessions WHERE s_sid='" . $session . "' AND s_isOpen='1'";
-				if (!mysqli_query($con,$sql)) {
-					die('Error: ' . mysqli_error());
-				}
-				$result = $con->query($sql);
-				$row = $result->fetch_array(MYSQLI_NUM);
-				$total = $row[0];
-				if($total == 1) {
-					session_start();
-					$_SESSION['student'] = $student;
-					$_SESSION['studentOfSession'] = $session;
-					header("location:vote/index.php");
-				} else {
-					$error = true;
-					$errorMsg .= '<br>The session is not currently open.';
-				}
-			} else {
+			if($row[0] == 1) { // Do stuff
+			
+			}	else {
 				$error = true;
 				$invalid['ces_session'] = true;
 				$session = "";
@@ -130,6 +117,19 @@
 								<li><a href="../teacher/create.php">Create Session</a></li>
 								<li><a href="../teacher/admin.php">Administer Session</a></li>
 							</ul>
+							<?php if(isset($_SESSION['session'])) echo '
+							<div style="display:inline-block" class="navbar-pull-right">
+								<ul class="nav">
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book"></i> '.$_SESSION['session'].' <b class="caret"></b></a>
+										<ul class="dropdown-menu pull-right">
+											<li><a href="../teacher/logout.php"><i class="icon-user"></i> Log out</a></li>
+											<li><a href="../teacher/settings.php"><i class="icon-cogs"></i> Settings</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+							'; ?>
 						</div><!--/.nav-collapse -->
 					</div>
 				</div>
@@ -139,7 +139,11 @@
 				<div class="row-fluid">
 					<div class="span6 offset3" style="text-align:center">
 						<?php
-						if($error) {
+						if(isset($_SESSION['session'])) {
+							echo '<div class="alert alert-error">
+											<button type="button" class="close" data-dismiss="alert">&times;</button><strong>Logged into session.</strong> Please <a href="../teacher/logout.php">log out</a> of your current session.
+										</div>';
+						}	else if($error) {
 							echo '<div class="alert alert-error">
 											<button type="button" class="close" data-dismiss="alert">&times;</button><strong>Unable to join session.</strong> ' . $errorMsg . '
 										</div>';

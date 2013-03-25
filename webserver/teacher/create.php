@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	
 function checkID($con,$id_check) {
 	$id_check = $con->real_escape_string($id_check); // Prevent SQL Injections
@@ -83,7 +84,6 @@ if ($_POST['ces_submitted'] == 1) {
 
 		mysqli_close($con);
 		
-		session_start();
 		$_SESSION['session'] = $id; // Automatically login
 		
 		include 'email/welcome.php';
@@ -156,6 +156,19 @@ if ($_POST['ces_submitted'] == 1) {
 								<li class="active"><a href="create.php">Create Session</a></li>
 								<li><a href="admin.php">Administer Session</a></li>
 							</ul>
+							<?php if(isset($_SESSION['session'])) echo '
+							<div style="display:inline-block" class="navbar-pull-right">
+								<ul class="nav">
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book"></i> '.$_SESSION['session'].' <b class="caret"></b></a>
+										<ul class="dropdown-menu pull-right">
+											<li><a href="logout.php"><i class="icon-user"></i> Log out</a></li>
+											<li><a href="settings.php"><i class="icon-cogs"></i> Settings</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+							'; ?>
 						</div><!--/.nav-collapse -->
 					</div>
 				</div>
@@ -165,7 +178,11 @@ if ($_POST['ces_submitted'] == 1) {
 				<div class="row-fluid">
 					<div class="span6 offset3" style="text-align:center">
 						<?php
-							if(!$continue) {
+							if(isset($_SESSION['session'])) {
+								echo '<div class="alert alert-error">
+												<button type="button" class="close" data-dismiss="alert">&times;</button><strong>Logged into session.</strong> Please <a href="../teacher/logout.php">log out</a> of your current session.
+											</div>';
+							} else if(!$continue) {
 								echo '<div class="alert alert-error">
 												<button type="button" class="close" data-dismiss="alert">×</button><strong>Form not submitted.</strong> ' . $reason_fail . '
 											</div>';
