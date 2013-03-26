@@ -13,15 +13,39 @@
 			exit();
 	}
 	
-	$query = "SELECT s_qtype FROM questions WHERE s_sid='" . $_SESSION['studentSession'] . "' AND s_open=1";
+	$query = "SELECT PID FROM questions WHERE s_sid='" . $_SESSION['studentSession'] . "' AND s_open=1";
 	$result = $con->query($query);
 	if (!$result) {
 		die('Error: ' . mysqli_error());
 	}
 	$row = $result->fetch_array();
-	if(!empty($row)) {
-		$qtype = $row[0];
-		header('location:' . $qtype . '.php');
+	$qid = $row[0];
+	
+	if($qid == $_GET['id']) {
+		// Get (any) previous answer
+		$query = "SELECT s_vote FROM votes WHERE s_student='" . $_SESSION['student'] . "' AND s_qnum='" . $qid . "'";
+		$result = $con->query($query);
+		if (!$result) {
+			die('Error: ' . mysqli_error());
+		}
+		$row = $result->fetch_array();
+		
+		if(empty($row)) {
+			$query = "INSERT INTO votes (s_sid, s_student, s_qnum, s_vote) VALUES ('". $_SESSION['studentSession'] . "', '" . $_SESSION['student'] . "' , '" . $qid . "','" . $_GET['vote'] . "')";
+			$result = $con->query($query);
+			if (!$result) {
+				die('Error: ' . mysqli_error());
+			}
+		} else {
+			// Not empty; update previous answer
+			$query = "UPDATE votes SET s_vote='" . $_GET['vote'] . "' WHERE s_student='" . $_SESSION['student'] . "' AND s_qnum='" . $qid . "'";
+			$result = $con->query($query);
+			if (!$result) {
+				die('Error: ' . mysqli_error());
+			}
+		}
+	} else {
+		header('location:index.php?followup=syncError');
 	}
 	
 	mysqli_close($con);
@@ -97,9 +121,8 @@
 
 			<div class="container-fluid">
 				<div class="span6 offset3" style="text-align:center">
-					<h2>Hello!</h2>
-					<h3>Looks like there isn't a question open yet. Refresh below to check again.</h3>
-					<a href="index.php" class="btn btn-large btn-primary" style="padding-top: .55em"><a class="icon-refresh"></i>&nbsp;&nbsp;Refresh</a>
+					<h2>Success!</h2>
+					<a href="index.php" class="btn btn-large btn-primary" style="padding-top: .55em">Look for next question</a>
 				</div>
 			</div> <!-- /container -->
 			<div id="push"></div> <!-- Footer pusher -->
