@@ -1,6 +1,10 @@
 <?php
 	session_start();
 	
+	if(isset($_SESSION['student'])) {
+		header('location:vote/index.php');
+	}
+	
 	include '../php/Mobile_Detect.php';
 	$detect = new Mobile_Detect();
 	$autofocus = true;
@@ -43,8 +47,10 @@
 			$result = $con->query($sql);
 			$row = $result->fetch_array(MYSQLI_NUM);
 			$total = $row[0];
-			if($row[0] == 1) { // Do stuff
-			
+			if($row[0] == 1) {
+				$_SESSION['student'] = $student;
+				$_SESSION['studentSession'] = $session;
+				header("location:vote/index.php");
 			}	else {
 				$error = true;
 				$invalid['ces_session'] = true;
