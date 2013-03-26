@@ -114,7 +114,7 @@
 							<ul class="nav">
 								<li><a href="../student/index.php">Join Session</a></li>
 								<li><a href="create.php">Create Session</a></li>
-								<li class="active"><a href="admin.php">Administer Session</a></li>
+								<li class="active"><a href="admin.php">Administrate Session</a></li>
 							</ul>
 						</div><!--/.nav-collapse -->
 						 <?php if(isset($_SESSION['student'])) echo '

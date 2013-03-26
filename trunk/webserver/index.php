@@ -55,7 +55,7 @@
 						<br><br>
 						<button class="btn btn-large btn-info" type="button" onclick="parent.location='teacher/create.php'">Create a session&nbsp;&nbsp;<i class="icon-asterisk icon-white"></i></button>
 						<br><br>
-						<button class="btn btn-large btn-danger" type="button" onclick="parent.location='teacher/admin.php'">Administer a session&nbsp;&nbsp;<i class="icon-wrench icon-white"></i></button>
+						<button class="btn btn-large btn-danger" type="button" onclick="parent.location='teacher/admin.php'">Administrate a session&nbsp;&nbsp;<i class="icon-wrench icon-white"></i></button>
 						<br><br>
 					</div>
 				</div>

@@ -76,9 +76,9 @@
 							<ul class="nav">
 								<li class="active"><a href="../index.php">Join Session</a></li>
 								<li><a href="../../teacher/create.php">Create Session</a></li>
-								<li><a href="../../teacher/admin.php">Administer Session</a></li>
+								<li><a href="../../teacher/admin.php">Administrate Session</a></li>
 							</ul>
-							<?php if(isset($_SESSION['student'])) echo '
+							<?php if(!isset($_SESSION['student'])) echo '
 							<div style="display:inline-block" class="navbar-pull-right">
 								<ul class="nav">
 									<li class="dropdown">

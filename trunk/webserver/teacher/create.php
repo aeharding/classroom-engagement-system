@@ -158,7 +158,22 @@ if ($_POST['ces_submitted'] == 1) {
 							<ul class="nav">
 								<li><a href="../student/index.php">Join Session</a></li>
 								<li class="active"><a href="create.php">Create Session</a></li>
-								<li><a href="admin.php">Administer Session</a></li>
+								<?php if(!isset($_SESSION['session'])) {
+									echo '<li><a href="admin.php">Administrate Session</a></li>';
+								} else {
+									echo '
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown">Administrate Session <b class="caret"></b></a>
+											<ul class="dropdown-menu">
+												<li><a href="admin.php"><i class="icon-quote-left"></i> Lecture panel</a></li>
+												<li><a href="old.php"><i class="icon-bar-chart"></i> Results &amp; Old Questions</a></li>
+												<li class="divider"></li>
+												<li><a href="settings.php"><i class="icon-cogs"></i> Settings</a></li>
+											</ul>
+										</li>
+									';
+								}
+								?>
 							</ul>
 							<?php if(isset($_SESSION['session'])) echo '
 							<div style="display:inline-block" class="navbar-pull-right">
