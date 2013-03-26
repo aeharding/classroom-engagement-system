@@ -205,7 +205,7 @@ if ($_POST['ces_submitted'] == 1) {
 								</div>
 								<div class="input-prepend<?php if($invalid['ces_email']) echo ' control-group warning';?>" style="width:100%">
 									<label for="ces_email" style="display:inline"><span class="add-on"><i class="icon-envelope"></i></span></label>
-									<input type="text" name="ces_email" id="ces_email" autocomplete="off" <?php if($autofocus && $invalid['ces_email'] && !$invalid['ces_sid']) echo 'autofocus'; ?> style="width:80%" placeholder="Your email" value="<?php echo $email; ?>">
+									<input type="email" name="ces_email" id="ces_email" autocomplete="off" <?php if($autofocus && $invalid['ces_email'] && !$invalid['ces_sid']) echo 'autofocus'; ?> style="width:80%" placeholder="Your email" value="<?php echo $email; ?>">
 								</div>
 								<div class="input-prepend<?php if($invalid['ces_pass']) echo ' control-group warning';?>" style="width:100%">
 									<label for="ces_pass" style="display:inline"><span class="add-on"><i class="icon-key"></i></span></label>
