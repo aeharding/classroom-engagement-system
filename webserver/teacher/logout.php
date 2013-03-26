@@ -8,6 +8,12 @@
 		$result = $con->query($query);
 	}
 	session_destroy();
-	header("location:../index.php");
+	
+	$url = 'index.php';
+	if(isset($_GET['to'])) {
+		$url = $_GET['to'];
+	}
+	
+	header("location:../".$url);
 	
 ?>

@@ -1,6 +1,13 @@
 <?php
 	session_start();
 	
+	include '../php/Mobile_Detect.php';
+	$detect = new Mobile_Detect();
+	$autofocus = true;
+	if ($detect->isMobile() || $detect->isTablet()) {
+    $autofocus = false;
+	}
+	
 function checkID($con,$id_check) {
 	$id_check = $con->real_escape_string($id_check); // Prevent SQL Injections
 	$query = "SELECT * FROM sessions WHERE s_sid='" . $id_check . "'";
@@ -180,7 +187,7 @@ if ($_POST['ces_submitted'] == 1) {
 						<?php
 							if(isset($_SESSION['session'])) {
 								echo '<div class="alert alert-error">
-												<button type="button" class="close" data-dismiss="alert">&times;</button><strong>Logged into session.</strong> Please <a href="../teacher/logout.php">log out</a> of your current session.
+												<button type="button" class="close" data-dismiss="alert">&times;</button><strong>Logged into session.</strong> Please <a href="../teacher/logout.php?to=teacher/create.php">log out</a> of your current session.
 											</div>';
 							} else if(!$continue) {
 								echo '<div class="alert alert-error">
@@ -194,19 +201,19 @@ if ($_POST['ces_submitted'] == 1) {
 							<div style="max-width:300px;" class="center">
 								<div class="input-prepend<?php if($invalid['ces_sid']) echo ' control-group warning';?>" style="width:100%">
 									<label for="ces_sid" style="display:inline"><span class="add-on"><i class="icon-book"></i></span></label>
-									<input type="text" name="ces_sid" id="ces_sid" autocomplete="off" <?php if($invalid['ces_sid'] || (!$invalid['ces_email'] && !$invalid['ces_pass'] && !$invalid['ces_pass_ver'])) echo 'autofocus'; ?> style="width:80%" placeholder="Class session name" value="<?php echo $id; ?>">
+									<input type="text" name="ces_sid" id="ces_sid" autocomplete="off" <?php if($autofocus && ($invalid['ces_sid'] || (!$invalid['ces_email'] && !$invalid['ces_pass'] && !$invalid['ces_pass_ver']))) echo 'autofocus'; ?> style="width:80%" placeholder="Class session name" value="<?php echo $id; ?>">
 								</div>
 								<div class="input-prepend<?php if($invalid['ces_email']) echo ' control-group warning';?>" style="width:100%">
 									<label for="ces_email" style="display:inline"><span class="add-on"><i class="icon-envelope"></i></span></label>
-									<input type="text" name="ces_email" id="ces_email" autocomplete="off" <?php if($invalid['ces_email'] && !$invalid['ces_sid']) echo 'autofocus'; ?> style="width:80%" placeholder="Your email" value="<?php echo $email; ?>">
+									<input type="text" name="ces_email" id="ces_email" autocomplete="off" <?php if($autofocus && $invalid['ces_email'] && !$invalid['ces_sid']) echo 'autofocus'; ?> style="width:80%" placeholder="Your email" value="<?php echo $email; ?>">
 								</div>
 								<div class="input-prepend<?php if($invalid['ces_pass']) echo ' control-group warning';?>" style="width:100%">
 									<label for="ces_pass" style="display:inline"><span class="add-on"><i class="icon-key"></i></span></label>
-									<input type="password" name="ces_pass" id="ces_pass" autocomplete="off" <?php if($invalid['ces_pass'] && !$invalid['ces_sid'] && !$invalid['ces_email']) echo 'autofocus'; ?> style="width:80%" placeholder="Password" value="<?php echo $pass; ?>">
+									<input type="password" name="ces_pass" id="ces_pass" autocomplete="off" <?php if($autofocus && $invalid['ces_pass'] && !$invalid['ces_sid'] && !$invalid['ces_email']) echo 'autofocus'; ?> style="width:80%" placeholder="Password" value="<?php echo $pass; ?>">
 								</div>
 								<div class="input-prepend<?php if($invalid['ces_pass_ver']||$invalid['ces_pass']) echo ' control-group warning';?>" style="width:100%">
 									<label for="ces_pass_ver" style="display:inline"><span class="add-on"><i class="icon-repeat"></i></span></label>
-									<input type="password" name="ces_pass_ver" id="ces_pass_ver" autocomplete="off" <?php if($invalid['ces_pass_ver'] && !$invalid['ces_pass'] && !$invalid['ces_sid'] && !$invalid['ces_email']) echo 'autofocus'; ?> style="width:80%" placeholder="Password verification" value="<?php echo $pass_ver; ?>">
+									<input type="password" name="ces_pass_ver" id="ces_pass_ver" autocomplete="off" <?php if($autofocus && $invalid['ces_pass_ver'] && !$invalid['ces_pass'] && !$invalid['ces_sid'] && !$invalid['ces_email']) echo 'autofocus'; ?> style="width:80%" placeholder="Password verification" value="<?php echo $pass_ver; ?>">
 								</div>
 								<input type="hidden" name="ces_submitted" value="1">
 							</div>
