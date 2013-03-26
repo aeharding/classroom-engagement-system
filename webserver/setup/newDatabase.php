@@ -38,6 +38,7 @@
 	PID INT NOT NULL AUTO_INCREMENT, 
 	PRIMARY KEY(PID),
 	s_sid CHAR(30),
+	s_student CHAR(30),
 	s_qnum CHAR(50),
 	s_vote CHAR(150)
 	)";

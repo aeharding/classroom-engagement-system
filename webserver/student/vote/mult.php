@@ -13,15 +13,24 @@
 			exit();
 	}
 	
-	$query = "SELECT s_qtype FROM questions WHERE s_sid='" . $_SESSION['studentSession'] . "' AND s_open=1";
+	// Get qid for answer submission URLs
+	$query = "SELECT PID FROM questions WHERE s_sid='" . $_SESSION['studentSession'] . "' AND s_open=1";
+	$result = $con->query($query);
+	if (!$result) {
+		die('Error: ' . mysqli_error());
+	}
+	$row = $result->fetch_array();
+	$qid = $row[0];
+	
+	// Get (any) previous answer
+	$query = "SELECT s_vote FROM votes WHERE s_student='" . $_SESSION['student'] . "' AND s_qnum='" . $qid . "'";
 	$result = $con->query($query);
 	if (!$result) {
 		die('Error: ' . mysqli_error());
 	}
 	$row = $result->fetch_array();
 	if(!empty($row)) {
-		$qtype = $row[0];
-		header('location:' . $qtype . '.php');
+		$ans = $row[0];
 	}
 	
 	mysqli_close($con);
@@ -97,9 +106,26 @@
 
 			<div class="container-fluid">
 				<div class="span6 offset3" style="text-align:center">
-					<h2>Hello!</h2>
-					<h3>Looks like there isn't a question open yet. Refresh below to check again.</h3>
-					<a href="index.php" class="btn btn-large btn-primary" style="padding-top: .55em"><a class="icon-refresh"></i>&nbsp;&nbsp;Refresh</a>
+					<?php
+						if($_POST['ces_submitted'] == 1 && $numSessions == 0) {
+							echo '<div class="alert alert-error">
+											<button type="button" class="close" data-dismiss="alert">&times;</button><strong>Looks like a problem.</strong> No session names associated with this email address were found.
+										</div>';
+						} else if($_POST['ces_submitted'] == 1) {
+							echo '<div class="alert alert-success">
+											<button type="button" class="close" data-dismiss="alert">&times;</button><strong>Email\'s away!</strong> Please check your inbox, and <a href="../login.php">login here</a>.
+										</div>';
+						}
+					?>
+					<div data-toggle="buttons-radio">
+						<div class="btn-group btn-group-vertical multichoice-btn-group">
+							<a href="confirm.php?id=<?php echo $qid; ?>&vote=a" class="btn btn-large <?php if($ans == 'a') { echo 'btn-primary '; } ?>btn-block multichoice-btn" style="padding-top: .55em">A</a>
+							<a href="confirm.php?id=<?php echo $qid; ?>&vote=b" class="btn btn-large <?php if($ans == 'b') { echo 'btn-primary '; } ?> btn-block multichoice-btn" style="padding-top: .55em">B</a>
+							<a href="confirm.php?id=<?php echo $qid; ?>&vote=c" class="btn btn-large <?php if($ans == 'c') { echo 'btn-primary '; } ?> btn-block multichoice-btn" style="padding-top: .55em">C</a>
+							<a href="confirm.php?id=<?php echo $qid; ?>&vote=d" class="btn btn-large <?php if($ans == 'd') { echo 'btn-primary '; } ?> btn-block multichoice-btn" style="padding-top: .55em">D</a>
+							<a href="confirm.php?id=<?php echo $qid; ?>&vote=e" class="btn btn-large <?php if($ans == 'a') { echo 'btn-primary '; } ?> btn-block multichoice-btn" style="padding-top: .55em">E</a>
+						</div>
+					</div>
 				</div>
 			</div> <!-- /container -->
 			<div id="push"></div> <!-- Footer pusher -->
