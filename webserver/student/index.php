@@ -153,12 +153,12 @@
 							<h2>Enter details</h2>
 							<div style="max-width:300px;" class="center">
 								<div class="input-prepend<?php if($invalid['ces_session']) echo ' control-group warning';?>" style="width:100%">
-									<span class="add-on"><i class="icon-book"></i></span>
-									<input id="inputIcon" type="text" name="ces_session" autocomplete="off" value="<?php echo $session; ?>" <?php if($invalid['ces_session'] || !$invalid['ces_student']) echo 'autofocus'; ?> style="width:80%" placeholder="Class session name">
+									<label for="ces_session" style="display:inline"><span class="add-on"><i class="icon-book"></i></span></label>
+									<input type="text" name="ces_session" id="ces_session" autocomplete="off" value="<?php echo $session; ?>" <?php if($invalid['ces_session'] || !$invalid['ces_student']) echo 'autofocus'; ?> style="width:80%" placeholder="Class session name">
 								</div>
 								<div class="input-prepend<?php if($invalid['ces_student']) echo ' control-group warning';?>" style="width:100%">
-									<span class="add-on"><i class="icon-user"></i></span>
-									<input id="inputIcon" type="text" name="ces_student" autocomplete="off" value="<?php echo $student; ?>" <?php if($invalid['ces_student']) echo 'autofocus'; ?> style="width:80%" placeholder="Your student ID">
+									<label for="ces_student" style="display:inline"><span class="add-on"><i class="icon-user"></i></span></label>
+									<input type="text" name="ces_student" id="ces_student" autocomplete="off" value="<?php echo $student; ?>" <?php if($invalid['ces_student']) echo 'autofocus'; ?> style="width:80%" placeholder="Your student ID">
 								</div>
 								<input type="hidden" name="ces_submitted" value="1">
 							</div>
