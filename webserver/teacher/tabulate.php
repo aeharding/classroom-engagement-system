@@ -1,5 +1,5 @@
 <?php 
-
+	include '../setup/connect.php';
 	$con = new mysqli($config_server, $config_user, $config_pass, $config_table);
 	$query = "SELECT * FROM `questions` WHERE s_sid='{$_SESSION['session']}' ORDER BY s_time DESC";
 	$result = $con->query($query);
@@ -7,6 +7,8 @@
 	for($i = 0; $row = mysqli_fetch_array($result); $i++) {
 		if($i > 10) { break; } // TODO
 		$qtype = "";
+		$corrAnswer = $row['s_correct'];
+		$description = $row['s_qdesc'];
 		if($row['s_qtype'] == 'mult') {
 			$qtype = "A-E";
 		} else if($row['s_qtype'] == 'bool') {
@@ -15,6 +17,8 @@
 		echo "<tr>";
 		echo "<td>{$row['s_time']}</td>";
 		echo "<td>$qtype</td>";
+		echo "<td>$correctAnswer</td>";
+		echo "<td>$description</td>";
 		echo '<td>
 			<div class="btn-group">
 				<button class="btn btn-small dropdown-toggle" data-toggle="dropdown">Options <span class="caret"></span></button>

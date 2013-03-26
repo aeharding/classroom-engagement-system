@@ -125,7 +125,22 @@
 							<ul class="nav">
 								<li class="active"><a href="index.php">Join Session</a></li>
 								<li><a href="../teacher/create.php">Create Session</a></li>
-								<li><a href="../teacher/admin.php">Administer Session</a></li>
+								<?php if(!isset($_SESSION['session'])) {
+									echo '<li><a href="../teacher/admin.php">Administrate Session</a></li>';
+								} else {
+									echo '
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown">Administrate Session <b class="caret"></b></a>
+											<ul class="dropdown-menu">
+												<li><a href="../teacher/admin.php"><i class="icon-quote-left"></i> Lecture panel</a></li>
+												<li><a href="../teacher/old.php"><i class="icon-bar-chart"></i> Results &amp; Old Questions</a></li>
+												<li class="divider"></li>
+												<li><a href="../teacher/settings.php"><i class="icon-cogs"></i> Settings</a></li>
+											</ul>
+										</li>
+									';
+								}
+								?>
 							</ul>
 							<?php if(isset($_SESSION['session'])) echo '
 							<div style="display:inline-block" class="navbar-pull-right">

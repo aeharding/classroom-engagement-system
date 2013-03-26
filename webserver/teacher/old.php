@@ -94,38 +94,20 @@
 
 			<div class="container-fluid">
 				<div class="row-fluid">
-					<div class="span4 offset1" style="text-align:center">
-						<h3>Current question</h3>
-						<h4>Opened <strong class="text-warning">7</strong> minutes ago.<h4>
-						<h4><strong class="text-warning">16</strong> students have answered.</h4>
-						<button class="btn btn-danger btn-large"><i class="icon-stop icon-white"></i> Close question</button>
-					</div>
-					<hr class="visible-phone">
-					<div class="span4 offset2" style="text-align:center">
-						<form action="newQuestion.php" method="post" name="newQuestion">
-							<h3>Create new question</h3>
-							<div style="max-width:300px;" class="center">
-								<input type="text" class="input-block-level" name="description" placeholder="Question description [optional]">
-								<select class="span12" name="answerType" onchange="correctAnswerUpdate();">
-									<option value="mult">Multiple choice [A-E]</option>
-									<option value="bool">Boolean [true/false]</option>
-									<option value="resp">Short answer</option>
-								</select>
-								<span id="corrAnswerMod">
-									Correct answer:
-									<select class="span4" name="corrAnswer">
-										<option value="none">None</option>
-										<option value="a">A</option>
-										<option value="b">B</option>
-										<option value="c">C</option>
-										<option value="d">D</option>
-										<option value="e">E</option>
-									</select>
-								</span>
-								<input type="hidden" name="ces_submitted" value="1">
-							</div>
-							<button class="btn btn-large btn-primary" type="submit">Create question</button>
-						</form>
+					<div class="span8 offset2" style="text-align:center">
+						<h3>Old questions</h3>
+						<button class="btn btn-info btn-small dropdown-toggle"><i class="icon-download-alt icon-white"></i> Download all in .csv</button>
+						<br><br>
+						<table class="table table-striped">
+							<tr>
+								<td><strong>Date</strong></td>
+								<td><strong>Type</strong></td>
+								<td><strong>Correct Answer</strong></td>
+								<td><strong>Description</strong></td>
+								<td><strong>More</strong></td>
+							</tr>
+							<?php include 'tabulate.php'; ?>
+						</table>
 					</div>
 				</div>
 			</div> <!-- /container -->
