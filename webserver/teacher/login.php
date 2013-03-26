@@ -152,6 +152,11 @@
 						</form>
 					</div>
 				</div>
+				<div class="row-fluid">
+					<div class="span6 offset3" style="text-align:center">
+						<p>Forgot your <a href="forgot/session.php">session name</a> or <a href="forgot/password.php">password</a>?
+					</div>
+				</div>
 			</div> <!-- /container -->
 			<div id="push"></div> <!-- Footer pusher -->
 		</div> <!-- /wrap -->
