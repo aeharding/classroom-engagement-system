@@ -123,7 +123,7 @@
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i> '.$_SESSION['student'].' <b class="caret"></b></a>
 										<ul class="dropdown-menu pull-right">
-											<li><a href="../logout.php"><i class="icon-stop"></i> Leave session</a></li>
+											<li><a href="../student/logout.php"><i class="icon-stop"></i> Leave session</a></li>
 										</ul>
 									</li>
 								</ul>
