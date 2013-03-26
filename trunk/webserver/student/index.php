@@ -1,6 +1,13 @@
 <?php
 	session_start();
 	
+	include '../php/Mobile_Detect.php';
+	$detect = new Mobile_Detect();
+	$autofocus = true;
+	if ($detect->isMobile() || $detect->isTablet()) {
+    $autofocus = false;
+	}
+
 	$invalid['ces_session'] = false;
 	$invalid['ces_student'] = false;
 	
@@ -141,7 +148,7 @@
 						<?php
 						if(isset($_SESSION['session'])) {
 							echo '<div class="alert alert-error">
-											<button type="button" class="close" data-dismiss="alert">&times;</button><strong>Logged into session.</strong> Please <a href="../teacher/logout.php">log out</a> of your current session.
+											<button type="button" class="close" data-dismiss="alert">&times;</button><strong>Logged into session.</strong> Please <a href="../teacher/logout.php?to=student/index.php">log out</a> of your current session.
 										</div>';
 						}	else if($error) {
 							echo '<div class="alert alert-error">
@@ -154,11 +161,11 @@
 							<div style="max-width:300px;" class="center">
 								<div class="input-prepend<?php if($invalid['ces_session']) echo ' control-group warning';?>" style="width:100%">
 									<label for="ces_session" style="display:inline"><span class="add-on"><i class="icon-book"></i></span></label>
-									<input type="text" name="ces_session" id="ces_session" autocomplete="off" value="<?php echo $session; ?>" <?php if($invalid['ces_session'] || !$invalid['ces_student']) echo 'autofocus'; ?> style="width:80%" placeholder="Class session name">
+									<input type="text" name="ces_session" id="ces_session" autocomplete="off" value="<?php echo $session; ?>" <?php if($autofocus && ($invalid['ces_session'] || !$invalid['ces_student'])) echo 'autofocus'; ?> style="width:80%" placeholder="Class session name">
 								</div>
 								<div class="input-prepend<?php if($invalid['ces_student']) echo ' control-group warning';?>" style="width:100%">
 									<label for="ces_student" style="display:inline"><span class="add-on"><i class="icon-user"></i></span></label>
-									<input type="text" name="ces_student" id="ces_student" autocomplete="off" value="<?php echo $student; ?>" <?php if($invalid['ces_student']) echo 'autofocus'; ?> style="width:80%" placeholder="Your student ID">
+									<input type="text" name="ces_student" id="ces_student" autocomplete="off" value="<?php echo $student; ?>" <?php if($autofocus && $invalid['ces_student']) echo 'autofocus'; ?> style="width:80%" placeholder="Your student ID">
 								</div>
 								<input type="hidden" name="ces_submitted" value="1">
 							</div>
