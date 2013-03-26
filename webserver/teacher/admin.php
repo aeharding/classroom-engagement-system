@@ -1,10 +1,8 @@
 <?php
 	session_start();
 	if(!isset($_SESSION['session'])) {
-		session_destroy();
 		header("location:login.php");
 	}
-	include '../setup/connect.php';		
 ?>
 <html lang="en">
   <head>

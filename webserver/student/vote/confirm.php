@@ -43,11 +43,12 @@
 			if (!$result) {
 				die('Error: ' . mysqli_error());
 			}
-			header('location:index.php');
 		}
 	} else {
 		header('location:index.php?followup=syncError');
 	}
 	
 	mysqli_close($con);
+	
+	header('location:index.php');
 ?>
