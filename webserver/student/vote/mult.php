@@ -123,7 +123,7 @@
 							<a href="confirm.php?id=<?php echo $qid; ?>&vote=b" class="btn btn-large <?php if($ans == 'b') { echo 'btn-primary '; } ?> btn-block multichoice-btn" style="padding-top: .55em">B</a>
 							<a href="confirm.php?id=<?php echo $qid; ?>&vote=c" class="btn btn-large <?php if($ans == 'c') { echo 'btn-primary '; } ?> btn-block multichoice-btn" style="padding-top: .55em">C</a>
 							<a href="confirm.php?id=<?php echo $qid; ?>&vote=d" class="btn btn-large <?php if($ans == 'd') { echo 'btn-primary '; } ?> btn-block multichoice-btn" style="padding-top: .55em">D</a>
-							<a href="confirm.php?id=<?php echo $qid; ?>&vote=e" class="btn btn-large <?php if($ans == 'a') { echo 'btn-primary '; } ?> btn-block multichoice-btn" style="padding-top: .55em">E</a>
+							<a href="confirm.php?id=<?php echo $qid; ?>&vote=e" class="btn btn-large <?php if($ans == 'e') { echo 'btn-primary '; } ?> btn-block multichoice-btn" style="padding-top: .55em">E</a>
 						</div>
 					</div>
 				</div>
