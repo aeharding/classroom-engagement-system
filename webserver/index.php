@@ -63,7 +63,7 @@
     </div> <!-- /wrap for footer -->
 		<div id="footer">
       <div class="container-fluid">
-        <p class="muted"><br>Created by Research to Reality <a href="http://wiki.gpii.net/index.php/R2R" target="_blank">[about us]</a>
+        <br><p class="muted credit" style="text-align:center">&copy; 2013 <a href="http://wiki.gpii.net/index.php/R2R" target="_blank">R2R</a> and <a href="http://trace.wisc.edu" target="_blank">Trace R&amp;D Center</a></p>
       </div>
     </div>
     
