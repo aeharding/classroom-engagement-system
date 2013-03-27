@@ -116,19 +116,20 @@
 								<li><a href="create.php">Create Session</a></li>
 								<li class="active"><a href="admin.php">Administrate Session</a></li>
 							</ul>
+							<?php if(isset($_SESSION['student'])) echo '
+								<div style="display:inline-block" class="navbar-pull-right">
+									<ul class="nav">
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i> '.$_SESSION['student'].' <b class="caret"></b></a>
+											<ul class="dropdown-menu pull-right">
+												<li><a href="../student/logout.php"><i class="icon-stop"></i> Leave session</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+								'; 
+							?>
 						</div><!--/.nav-collapse -->
-						 <?php if(isset($_SESSION['student'])) echo '
-							<div style="display:inline-block" class="navbar-pull-right">
-								<ul class="nav">
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i> '.$_SESSION['student'].' <b class="caret"></b></a>
-										<ul class="dropdown-menu pull-right">
-											<li><a href="../student/logout.php"><i class="icon-stop"></i> Leave session</a></li>
-										</ul>
-									</li>
-								</ul>
-							</div>
-							'; ?>
 					</div>
 				</div>
 			</div>
