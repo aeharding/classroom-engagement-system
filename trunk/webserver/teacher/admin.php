@@ -63,12 +63,23 @@
 				$.getJSON("questionAnswers.php?id=" + <?php echo $currQuestion; ?>,
 					function(data){
 						updateAnswers(data);
-						if(data.length > 1) {
+						if(data[1][0].length > 1) {
+							document.getElementById('chart').innerHTML = outResponses(data);
+						} else if(data.length > 1) {
 							drawChart(data);
 						} else {
 							document.getElementById('chart').innerHTML = "";
 						}
 				});
+			}
+			
+			function outResponses(chart_arr) {
+				var out = '<div style="text-align:left"><ol>';
+				for(var i = 1; i < chart_arr.length; i++) {
+					out += '<li>' + chart_arr[i][0] + '</li>';
+				}
+				out += '</div>';
+				return out;
 			}
 			
       google.load("visualization", "1", {packages:["corechart"]});
@@ -172,7 +183,7 @@
 						<form action="newQuestion.php" method="post" name="newQuestion">
 							<h3>Create new question</h3>
 							<div style="max-width:300px;" class="center">
-								<input type="text" class="input-block-level" name="description" placeholder="Question description [optional]">
+								<input type="text" class="input-block-level" name="description" maxlength="300" placeholder="Question description [optional]">
 								<select class="span12" name="answerType" onchange="correctAnswerUpdate();">
 									<option value="mult">Multiple choice [A-E]</option>
 									<option value="bool">Boolean [true/false]</option>

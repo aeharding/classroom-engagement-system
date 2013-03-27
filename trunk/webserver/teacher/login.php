@@ -153,7 +153,7 @@
 							<div style="max-width:300px;" class="center">
 								<div class="input-prepend<?php if($invalid) echo ' control-group warning';?>" style="width:100%">
 									<label for="ces_sid" style="display:inline"><span class="add-on"><i class="icon-book"></i></span></label>
-									<input type="text" name="ces_sid" id="ces_sid" autocomplete="off" value="<?php echo $id; ?>" <?php if($autofocus && !$invalid) echo 'autofocus'; ?> style="width:80%" placeholder="Class session name">
+									<input type="text" name="ces_sid" id="ces_sid" autocomplete="off" maxlength="30" value="<?php echo $id; ?>" <?php if($autofocus && !$invalid) echo 'autofocus'; ?> style="width:80%" placeholder="Class session name">
 								</div>
 								<div class="input-prepend<?php if($invalid) echo ' control-group warning';?>" style="width:100%">
 									<label for="ces_pass" style="display:inline"><span class="add-on"><i class="icon-key"></i></span></label>
