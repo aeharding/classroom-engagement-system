@@ -12,6 +12,8 @@
 			$qtype = "A-E";
 		} else if($row['s_qtype'] == 'bool') {
 			$qtype = "True/False";
+		} else if($row['s_qtype'] == 'resp') {
+			$qtype = "Short Answer";
 		}
 		echo "<tr>";
 		echo "<td>{$row['s_time']}</td>";

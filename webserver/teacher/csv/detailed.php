@@ -1,5 +1,5 @@
 <?php
-		header("Content-Disposition: attachment; filename=\"all_votes.txt\"");
+		header("Content-Disposition: attachment; filename=\"all_votes.csv\"");
 		header("Content-Type: application/force-download");
 		header("Content-Length: " . strlen($File));
 		header("Connection: close");
@@ -24,7 +24,7 @@
 		echo "Question #,Student ID,Answer\r\n";
 		
 		while($row = $result->fetch_array(MYSQLI_NUM)) {
-			 echo $row[0].",".$row[1].",".$row[2]."\r\n";
+			 echo $row[0] . "," . $row[1] . ",\"" . $row[2] . "\"\r\n";
 		}
 	}
 ?>

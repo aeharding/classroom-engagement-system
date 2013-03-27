@@ -19,7 +19,6 @@
 	PID INT NOT NULL AUTO_INCREMENT, 
 	PRIMARY KEY(PID),
 	s_sid CHAR(30),
-	s_desc CHAR(50),
 	s_email CHAR(150),
 	s_pass CHAR(32)
 	)";
@@ -40,7 +39,7 @@
 	s_sid CHAR(30),
 	s_student CHAR(30),
 	s_qnum CHAR(50),
-	s_vote CHAR(150)
+	s_vote CHAR(300)
 	)";
 
 	// Execute query
@@ -66,7 +65,7 @@
 	s_qtype CHAR(4),
 	s_correct CHAR(1),
 	s_time CHAR(150),
-	s_qdesc CHAR(150)
+	s_qdesc CHAR(300)
 	)";
 
 	// Execute query
