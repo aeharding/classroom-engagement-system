@@ -14,7 +14,6 @@
 	$result = $con->query($sql);
 	
 	$count = array();
-	array_push($count,array("Value","Votes"));
 	
 	while($row = mysqli_fetch_array($result)) {
 		for($pos = 0; $pos < count($count); $pos++) {
@@ -29,5 +28,7 @@
 		}
 	}
 	
+	sort($count); // Todo, not really working.
+	array_unshift($count,array("Value","Votes"));
 	echo json_encode($count);
 ?>

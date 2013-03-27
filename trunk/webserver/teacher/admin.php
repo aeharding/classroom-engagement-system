@@ -47,10 +47,20 @@
 				updateChart();
 				window.setInterval(function () { updateChart(); }, 5000);
 			});
+			var dataa;
+			function updateAnswers(chart_arr) {
+				var votes = 0;
+				for(var i = 1; i < chart_arr.length; i++) { // Skip the chart labels
+					votes += chart_arr[i][1];
+				}
+				document.getElementById('numAnswers').innerHTML = votes;
+			}
 			
 			function updateChart() {
 				$.getJSON("questionAnswers.php?id=" + <?php echo $currQuestion; ?>,
 					function(data){
+						dataa = data;
+						updateAnswers(data);
 						drawChart(data);
 				});
 			}
@@ -62,6 +72,7 @@
 
         var options = {
           title: 'Current votes',
+          legend: {position: 'none'},
           hAxis: {title: 'Votes',  titleTextStyle: {color: 'red'}}
         };
 
@@ -139,7 +150,7 @@
 					<div class="span4 offset1" style="text-align:center">
 						<h3>Current question</h3>
 						<h4>Opened <strong class="text-warning">7</strong> minutes ago.<h4>
-						<h4><strong class="text-warning">16</strong> students have answered.</h4>
+						<h4><strong class="text-warning"><span id="numAnswers">?</span></strong> students have answered.</h4>
 						<div id="chart"></div>
 						<button class="btn btn-danger btn-large"><i class="icon-stop icon-white"></i> Close question</button>
 					</div>
