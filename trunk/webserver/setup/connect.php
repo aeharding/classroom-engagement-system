@@ -2,13 +2,13 @@
 	
 	// Basic MySQL connection information
 	$config_server = "localhost";
-	$config_user   = "appcooki_voteadm";
-	$config_pass   = "trace";
-	$config_table  = "appcooki_vote";
+	$config_user   = "ces";
+	$config_pass   = "12345";
+	$config_table  = "ces_db";
 	
 	// Base URL of install -- NO TRAILING SLASH
-	$base_URL      = "http://harding.ae/r2r";
-	$mail_sender   = "aeharding@wisc.edu";
-	$mail_replyto  = "aeharding@wisc.edu";
+	$base_URL      = "http://example.com/ces";
+	$mail_sender   = "ces@example.com";
+	$mail_replyto  = "ces@example.com";
 
 ?>

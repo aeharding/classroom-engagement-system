@@ -1,0 +1,19 @@
+Welcome to CES, version 1.0 Stable!
+3/27/2013
+
+This is the first release of the CES! Some complex functionality (such as 
+specific question properties) is disabled.
+
+There are many more releases and fixes to come, but this release brings basic 
+CES features and no known bugs.
+
+-------------------------------------------------------------------------------
+INSTALLATION PROCEDURE
+-------------------------------------------------------------------------------
+  1. Download the build of interest (either from the source webserver directory 
+     or the downloads tab above).
+  2. Place the files under the www directory on your webserver.
+  3. In a text editor, change the settings in setup/connect.php to contain 
+     valid MySQL connection settings and an absolute URL for the email service.
+  4. In a browser, run setup/newDatabase.php.
+     - Delete setup/newDatabase once complete with no errors.
