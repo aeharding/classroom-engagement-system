@@ -1,4 +1,8 @@
 <?php
+		header("Content-Disposition: attachment; filename=\"all_votes.txt\"");
+		header("Content-Type: application/force-download");
+		header("Content-Length: " . strlen($File));
+		header("Connection: close");
 	session_start();
 	
 	if(isset($_SESSION['session'])) {
@@ -17,10 +21,10 @@
 		
 		$result=$con->query($sql);
 		
-		printf("Question #,Student ID,Answer\r\n");
+		echo "Question #,Student ID,Answer\r\n";
 		
 		while($row = $result->fetch_array(MYSQLI_NUM)) {
-			 printf($row[0].",".$row[1].",".$row[2]."\r\n");
+			 echo $row[0].",".$row[1].",".$row[2]."\r\n";
 		}
 	}
 ?>

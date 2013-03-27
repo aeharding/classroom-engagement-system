@@ -96,7 +96,7 @@
 				<div class="row-fluid">
 					<div class="span8 offset2" style="text-align:center">
 						<h3>Old questions</h3>
-						<a href="csv/detailed.php" target="_blank" class="btn btn-info btn-small dropdown-toggle"><i class="icon-download-alt icon-white"></i> Download all in .csv</a>
+						<a href="csv/detailed.php" class="btn btn-info btn-small dropdown-toggle"><i class="icon-download-alt icon-white"></i> Download all in .csv</a>
 						<br><br>
 						<table class="table table-striped">
 							<tr>
