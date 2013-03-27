@@ -87,7 +87,7 @@
 								<li><a href="../../teacher/create.php">Create Session</a></li>
 								<li><a href="../../teacher/admin.php">Administrate Session</a></li>
 							</ul>
-							<?php if(@isset($_SESSION['student'])) echo '
+							<?php if(isset($_SESSION['student'])) echo '
 							<div style="display:inline-block" class="navbar-pull-right">
 								<ul class="nav">
 									<li class="dropdown">
@@ -105,25 +105,22 @@
 			</div>
 
 			<div class="container-fluid">
-				<div class="span6 offset3" style="text-align:center">
-					<?php
-						if($_POST['ces_submitted'] == 1 && $numSessions == 0) {
-							echo '<div class="alert alert-error">
-											<button type="button" class="close" data-dismiss="alert">&times;</button><strong>Looks like a problem.</strong> No session names associated with this email address were found.
-										</div>';
-						} else if($_POST['ces_submitted'] == 1) {
-							echo '<div class="alert alert-success">
-											<button type="button" class="close" data-dismiss="alert">&times;</button><strong>Email\'s away!</strong> Please check your inbox, and <a href="../login.php">login here</a>.
-										</div>';
-						}
-					?>
-					<div data-toggle="buttons-radio">
-						<div class="btn-group btn-group-vertical multichoice-btn-group">
-							<a href="confirm.php?id=<?php echo $qid; ?>&vote=a" class="btn btn-large <?php if($ans == 'a') { echo 'btn-primary '; } ?>btn-block multichoice-btn" style="padding-top: .55em">A</a>
-							<a href="confirm.php?id=<?php echo $qid; ?>&vote=b" class="btn btn-large <?php if($ans == 'b') { echo 'btn-primary '; } ?> btn-block multichoice-btn" style="padding-top: .55em">B</a>
-							<a href="confirm.php?id=<?php echo $qid; ?>&vote=c" class="btn btn-large <?php if($ans == 'c') { echo 'btn-primary '; } ?> btn-block multichoice-btn" style="padding-top: .55em">C</a>
-							<a href="confirm.php?id=<?php echo $qid; ?>&vote=d" class="btn btn-large <?php if($ans == 'd') { echo 'btn-primary '; } ?> btn-block multichoice-btn" style="padding-top: .55em">D</a>
-							<a href="confirm.php?id=<?php echo $qid; ?>&vote=e" class="btn btn-large <?php if($ans == 'e') { echo 'btn-primary '; } ?> btn-block multichoice-btn" style="padding-top: .55em">E</a>
+				<div class="row-fluid">
+					<div class="span6 offset3" style="text-align:center">
+						<div data-toggle="buttons-radio">
+							<div class="btn-group btn-group-vertical multichoice-btn-group">
+								<a href="confirm.php?id=<?php echo $qid; ?>&vote=a" class="btn btn-large <?php if($ans == 'a') { echo 'btn-primary '; } ?>btn-block multichoice-btn" style="padding-top: .55em">A</a>
+								<a href="confirm.php?id=<?php echo $qid; ?>&vote=b" class="btn btn-large <?php if($ans == 'b') { echo 'btn-primary '; } ?> btn-block multichoice-btn" style="padding-top: .55em">B</a>
+								<a href="confirm.php?id=<?php echo $qid; ?>&vote=c" class="btn btn-large <?php if($ans == 'c') { echo 'btn-primary '; } ?> btn-block multichoice-btn" style="padding-top: .55em">C</a>
+								<a href="confirm.php?id=<?php echo $qid; ?>&vote=d" class="btn btn-large <?php if($ans == 'd') { echo 'btn-primary '; } ?> btn-block multichoice-btn" style="padding-top: .55em">D</a>
+								<a href="confirm.php?id=<?php echo $qid; ?>&vote=e" class="btn btn-large <?php if($ans == 'e') { echo 'btn-primary '; } ?> btn-block multichoice-btn" style="padding-top: .55em">E</a>
+							</div>
+						</div>
+					</div>
+					<div class="row-fluid">
+						<div class="span6 offset3" style="text-align:center">
+							<br>
+							<a href="index.php" class="btn btn-large btn-primary"><i class="icon-refresh"></i>&nbsp;&nbsp;Refresh</a>
 						</div>
 					</div>
 				</div>
