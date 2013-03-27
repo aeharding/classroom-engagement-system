@@ -15,7 +15,7 @@
 	$invalid['ces_session'] = false;
 	$invalid['ces_student'] = false;
 	
-	if ($_POST['ces_submitted'] == 1) {
+	if ($_POST['ces_submitted'] == 1 && !isset($_SESSION['session'])) {
 		include '../setup/connect.php';
 		$con = new mysqli($config_server, $config_user, $config_pass, $config_table);
 		// Check connection

@@ -29,7 +29,7 @@ $email = "";
 $pass = "";
 $pass_ver = "";
 
-if ($_POST['ces_submitted'] == 1) {
+if ($_POST['ces_submitted'] == 1 && !isset($_SESSION['student']) && !isset($_SESSION['session'])) {
 	include '../setup/connect.php';
 	$con = new mysqli($config_server, $config_user, $config_pass, $config_table);
 	$id = $_POST['ces_sid'];
@@ -212,6 +212,10 @@ if ($_POST['ces_submitted'] == 1) {
 							if(isset($_SESSION['session'])) {
 								echo '<div class="alert alert-error">
 												<button type="button" class="close" data-dismiss="alert">&times;</button><strong>Logged into session.</strong> Please <a href="../teacher/logout.php?to=teacher/create.php">log out</a> of your current session.
+											</div>';
+							} else if(isset($_SESSION['student'])) {
+								echo '<div class="alert alert-error">
+												<button type="button" class="close" data-dismiss="alert">&times;</button><strong>Participating in session.</strong> Please <a href="../student/logout.php?to=teacher/create.php">leave</a> the current session.
 											</div>';
 							} else if(!$continue) {
 								echo '<div class="alert alert-error">

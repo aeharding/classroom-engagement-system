@@ -16,7 +16,7 @@
 	if(isset($_SESSION['session'])) {
 		header("location:admin.php");
 	}
-	if ($_POST['ces_submitted'] == 1) {
+	if ($_POST['ces_submitted'] == 1 && !isset($_SESSION['student'])) {
 		include '../setup/connect.php';
 		$con = new mysqli($config_server, $config_user, $config_pass, $config_table);
 		// Check connection
@@ -138,9 +138,9 @@
 				<div class="row-fluid">
 					<div class="span6 offset3" style="text-align:center">
 						<?php
-							if($_GET['created']) {
-								echo '<div class="alert alert-success">
-												<button type="button" class="close" data-dismiss="alert">×</button><strong>Success!</strong> Session created. Login to get started.
+						 if(isset($_SESSION['student'])) {
+								echo '<div class="alert alert-error">
+												<button type="button" class="close" data-dismiss="alert">&times;</button><strong>Participating in session.</strong> Please <a href="../student/logout.php?to=teacher/login.php">leave</a> the current session.
 											</div>';
 							} else if($_POST['ces_submitted']) {
 								echo '<div class="alert alert-error">
