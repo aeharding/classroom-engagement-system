@@ -51,7 +51,6 @@
 				updateChart();
 				window.setInterval(function () { updateChart(); }, 5000);
 			});
-			var dataa;
 			function updateAnswers(chart_arr) {
 				var votes = 0;
 				for(var i = 1; i < chart_arr.length; i++) { // Skip the chart labels
@@ -63,9 +62,12 @@
 			function updateChart() {
 				$.getJSON("questionAnswers.php?id=" + <?php echo $currQuestion; ?>,
 					function(data){
-						dataa = data;
 						updateAnswers(data);
-						drawChart(data);
+						if(data.length > 1) {
+							drawChart(data);
+						} else {
+							document.getElementById('chart').innerHTML = "";
+						}
 				});
 			}
 			
@@ -153,10 +155,17 @@
 				<div class="row-fluid">
 					<div class="span4 offset1" style="text-align:center">
 						<h3>Current question</h3>
-						<h4>Opened <abbr class="timeago" title="<?php echo $time; ?>"><?php echo $time; ?></abbr>.<h4>
-						<h4><strong class="text-warning"><span id="numAnswers">?</span></strong> students have answered.</h4>
-						<div id="chart"></div>
-						<button class="btn btn-danger btn-large"><i class="icon-stop icon-white"></i> Close question</button>
+						<?php if(!empty($currQuestion)) {
+							echo '
+								<h4>Opened <abbr class="timeago" title="' . $time . '"><?php echo $time; ?></abbr>.<h4>
+								<h4><strong class="text-warning"><span id="numAnswers">?</span></strong> students have answered.</h4>
+								<div id="chart"></div>
+								<a href="closeQuestion.php" class="btn btn-danger btn-large"><i class="icon-stop icon-white"></i> Close question</a>
+							';
+						} else {
+							echo '<h4>No question open.<br>To start, open a question.</h4>';
+						}
+						?>
 					</div>
 					<hr class="visible-phone">
 					<div class="span4 offset2" style="text-align:center">
