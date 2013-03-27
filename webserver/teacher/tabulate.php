@@ -4,8 +4,7 @@
 	$query = "SELECT * FROM `questions` WHERE s_sid='{$_SESSION['session']}' ORDER BY s_time DESC";
 	$result = $con->query($query);
 	
-	for($i = 0; $row = mysqli_fetch_array($result); $i++) {
-		if($i > 10) { break; } // TODO
+	while($row = mysqli_fetch_array($result)) {
 		$qtype = "";
 		$corrAnswer = $row['s_correct'];
 		$description = $row['s_qdesc'];

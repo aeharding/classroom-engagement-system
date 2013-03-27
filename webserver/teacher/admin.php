@@ -3,6 +3,18 @@
 	if(!isset($_SESSION['session'])) {
 		header("location:login.php");
 	}
+	
+	include '../setup/connect.php';
+	$con = new mysqli($config_server, $config_user, $config_pass, $config_table);
+	
+	$sql = "SELECT PID FROM questions WHERE s_sid='" . $_SESSION['session'] . "' AND s_open=1";
+	if (!mysqli_query($con,$sql)) {
+		die('Error: ' . mysqli_error());
+	}
+	
+	$result=$con->query($sql);
+	$row = $result->fetch_array(MYSQLI_NUM);
+	$currQuestion = $row[0];
 ?>
 <html lang="en">
   <head>
@@ -27,6 +39,36 @@
     <script type="text/javascript" src="../js/jquery-1.9.1.js"></script>
 
     <script type="text/javascript" src="../js/bootstrap.js"></script>
+    
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+			
+			$(document).ready(function() {
+				updateChart();
+				window.setInterval(function () { updateChart(); }, 5000);
+			});
+			
+			function updateChart() {
+				$.getJSON("questionAnswers.php?id=" + <?php echo $currQuestion; ?>,
+					function(data){
+						drawChart(data);
+				});
+			}
+			
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart(chart_arr) {
+        var data = google.visualization.arrayToDataTable(chart_arr);
+
+        var options = {
+          title: 'Current votes',
+          hAxis: {title: 'Votes',  titleTextStyle: {color: 'red'}}
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
+        chart.draw(data, options);
+      }
+    </script>
     
     <script>
     function correctAnswerUpdate() {
@@ -98,6 +140,7 @@
 						<h3>Current question</h3>
 						<h4>Opened <strong class="text-warning">7</strong> minutes ago.<h4>
 						<h4><strong class="text-warning">16</strong> students have answered.</h4>
+						<div id="chart"></div>
 						<button class="btn btn-danger btn-large"><i class="icon-stop icon-white"></i> Close question</button>
 					</div>
 					<hr class="visible-phone">
