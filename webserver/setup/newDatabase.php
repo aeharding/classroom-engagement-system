@@ -39,7 +39,7 @@
 	s_sid CHAR(30),
 	s_student CHAR(30),
 	s_qnum CHAR(50),
-	s_vote CHAR(300)
+	s_vote TEXT(300)
 	)";
 
 	// Execute query
@@ -65,7 +65,7 @@
 	s_qtype CHAR(4),
 	s_correct CHAR(1),
 	s_time CHAR(150),
-	s_qdesc CHAR(300)
+	s_qdesc TEXT(300)
 	)";
 
 	// Execute query
