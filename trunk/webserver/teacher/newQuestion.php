@@ -15,7 +15,7 @@
 
 		$description = $con->real_escape_string($description);
 		
-		$date = date('Y-m-d H:i:s');
+		$date = date('c');
 		
 		$query = "INSERT INTO questions (s_sid,s_qtype,s_correct,s_qdesc,s_time) 
 							VALUES('{$_SESSION['session']}','$answerType','$corrAnswer','$description','$date')";
